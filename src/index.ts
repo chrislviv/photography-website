@@ -21,15 +21,17 @@ document.addEventListener('DOMContentLoaded', (event: Event) => {
                     count === 0 ? '0px'   :
                     count === 2 ? '7.5rem'  :
                     count === 3 ? '10.5rem'  :
-                    count === 4 ? '13.5rem' : '7.5rem';
+                    count === 4 ? '13.5rem' :
+                    count === 5 ? '16.5rem' : '7.5rem';
             } else if (dropdownMenuDark) {
                 const count = dropdownMenuDark.childElementCount;
 
-                dropdownBackdropDark.style.height =
+                dropdownBackdrop.style.height =
                     count === 0 ? '0px'   :
                     count === 2 ? '7.5rem'  :
                     count === 3 ? '10.5rem'  :
-                    count === 4 ? '13.5rem' : '7.5rem';
+                    count === 4 ? '13.5rem' :
+                    count === 5 ? '16.5rem' : '7.5rem';
 
             }
         });
