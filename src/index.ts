@@ -23,10 +23,11 @@ document.addEventListener('DOMContentLoaded', (event: Event) => {
                     count === 3 ? '10.5rem'  :
                     count === 4 ? '13.5rem' :
                     count === 5 ? '16.5rem' : '7.5rem';
+
             } else if (dropdownMenuDark) {
                 const count = dropdownMenuDark.childElementCount;
 
-                dropdownBackdrop.style.height =
+                dropdownBackdropDark.style.height =
                     count === 0 ? '0px'   :
                     count === 2 ? '7.5rem'  :
                     count === 3 ? '10.5rem'  :
@@ -559,7 +560,6 @@ declare global {
 }
 
 window.openLightbox = function(portfolio: string, index: number,): void {
-  // Select the correct portfolio array
   if (portfolio === 'portfolio1') {
     activeImages = portfolio1Images;
   } else if (portfolio === 'portfolio2') {
@@ -569,7 +569,6 @@ window.openLightbox = function(portfolio: string, index: number,): void {
     return;
   }
   
-  // Validate index
   if (index < 0 || index >= activeImages.length) {
     console.error(`Index ${index} out of bounds for ${portfolio}`);
     return;
