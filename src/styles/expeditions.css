@@ -1,0 +1,252 @@
+/* Hero */
+.page-hero {
+    margin-top: 48px;
+    padding: 6rem 5% 4rem;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--white), var(--cream));
+}
+
+.page-hero h1 {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--forest);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.page-hero p {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Intro */
+.intro-section {
+    padding: 4rem 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-section p {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.9;
+}
+
+/* Expedition Sections */
+.expedition-section {
+    padding: 6rem 5%;
+}
+
+.expedition-section:nth-child(even) {
+    background-color: var(--white);
+}
+
+.expedition-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.expedition-text h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.expedition-category {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--golden);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.expedition-text p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.expedition-details {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.expedition-details li {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    padding-left: 1.8rem;
+    position: relative;
+}
+
+.expedition-details li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--golden);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Image */
+.expedition-image {
+    position: relative;
+}
+
+.expedition-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+/* Section title + divider (matches other pages) */
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--forest);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--golden);
+    margin: 0 auto 3rem;
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background-color: var(--forest);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--golden);
+    color: var(--white);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background-color: transparent;
+    border: 2px solid var(--forest);
+    color: var(--forest);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-secondary:hover {
+    background-color: var(--forest);
+    color: var(--cream);
+}
+
+/* Quote / highlight block */
+.expedition-quote {
+    background-color: var(--golden);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+.expedition-quote p {
+    color: var(--white);
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    background-color: var(--charcoal);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+footer p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--sand);
+    letter-spacing: 1px;
+}
+
+footer .footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+footer .footer-links a {
+    color: var(--sand);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+footer .footer-links a:hover {
+    color: var(--golden);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .expedition-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .expedition-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .expedition-image {
+        order: -1;
+    }
+}
