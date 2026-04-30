@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    outDir: 'dist',  // Make sure this is just 'dist'
-    emptyOutDir: true,  // Clear dist folder before building
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: 'index.html',
@@ -11,7 +11,8 @@ export default defineConfig({
         aboutPhotographer: 'aboutPhotographer.html',
         portfolio: 'portfolio.html',
         portfolio2: 'portfolio2.html',
-        contact: 'contact.html'
+        contact: 'contact.html',
+        expeditions: 'expeditions.html'
       }
     }
   }
