@@ -401,7 +401,7 @@
 /* ── Photo Strip ───────────────────────────────────────────── */
 .photo-strip {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     height: 380px;
 }
 
