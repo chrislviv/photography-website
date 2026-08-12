@@ -24,7 +24,6 @@ export default defineConfig({
         carsPortfolio: 'cars_portfolio.html',
         carsPortfolio2: 'cars_portfolio2.html',
         carsContact: 'cars_contact.html',
-        carsExpeditions: 'cars_expeditions.html',
       }
     }
   }
