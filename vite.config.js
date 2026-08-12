@@ -9,21 +9,21 @@ export default defineConfig({
         // Root
         main: 'index.html',
         // Wildlife
-        wildlifeHome: 'wildlife/index.html',
-        aboutEquipment: 'wildlife/aboutEquipment.html',
-        aboutPhotographer: 'wildlife/aboutPhotographer.html',
-        portfolio: 'wildlife/portfolio.html',
-        portfolio2: 'wildlife/portfolio2.html',
-        contact: 'wildlife/contact.html',
-        expeditions: 'wildlife/expeditions.html',
+        wildlifeHome: 'wildlife_index.html',
+        wildlifeAboutEquipment: 'wildlife_aboutEquipment.html',
+        wildlifeAboutPhotographer: 'wildlife_aboutPhotographer.html',
+        wildlifePortfolio: 'wildlife_portfolio.html',
+        wildlifePortfolio2: 'wildlife_portfolio2.html',
+        wildlifeContact: 'wildlife_contact.html',
+        wildlifeExpeditions: 'wildlife_expeditions.html',
         // Cars
-        carsHome: 'cars/index.html',
-        carsAboutEquipment: 'cars/aboutEquipment.html',
-        carsAboutPhotographer: 'cars/aboutPhotographer.html',
-        carsPortfolio: 'cars/portfolio.html',
-        carsPortfolio2: 'cars/portfolio2.html',
-        carsContact: 'cars/contact.html',
-        carsExpeditions: 'cars/expeditions.html'
+        carsHome: 'cars_index.html',
+        carsAboutEquipment: 'cars_aboutEquipment.html',
+        carsAboutPhotographer: 'cars_aboutPhotographer.html',
+        carsPortfolio: 'cars_portfolio.html',
+        carsPortfolio2: 'cars_portfolio2.html',
+        carsContact: 'cars_contact.html',
+        carsExpeditions: 'cars_expeditions.html',
       }
     }
   }
