@@ -1,0 +1,560 @@
+/* ── Page Hero ─────────────────────────────────────────────── */
+.page-hero {
+    margin-top: 48px;
+    padding: 8rem 5% 6rem;
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgba(20,30,20,0.55), rgba(20,30,20,0.4)), url('/Gorilla.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    position: relative;
+}
+
+.page-hero h1 {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+}
+
+.page-hero .expedition-label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--golden);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.page-hero p.subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(255, 252, 247, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* ── Stats Bar ─────────────────────────────────────────────── */
+.stats-bar {
+    background-color: var(--forest);
+    padding: 2.5rem 5%;
+}
+
+.stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--golden);
+    letter-spacing: 1px;
+    display: block;
+    line-height: 1;
+}
+
+.stat-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sand);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    display: block;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 50px;
+    background-color: rgba(200, 181, 160, 0.25);
+}
+
+/* ── Section Shared ────────────────────────────────────────── */
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--forest);
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--golden);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--golden);
+    margin: 0 auto 3rem;
+}
+
+/* ── Overview Section ──────────────────────────────────────── */
+.overview-section {
+    padding: 6rem 5%;
+}
+
+.overview-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+}
+
+.overview-text p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--charcoal);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.overview-sidebar h3 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.overview-sidebar .divider {
+    margin: 0 0 1.5rem;
+}
+
+.destinations-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2.5rem;
+}
+
+.destinations-list li {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(58, 75, 58, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.destinations-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--golden);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.highlights-list {
+    list-style: none;
+    padding: 0;
+}
+
+.highlights-list li {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 0.6rem 0 0.6rem 1.8rem;
+    position: relative;
+    border-bottom: 1px solid rgba(58, 75, 58, 0.06);
+}
+
+.highlights-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--golden);
+    font-size: 0.85rem;
+}
+
+/* ── Itinerary Section ─────────────────────────────────────── */
+.itinerary-section {
+    padding: 6rem 5%;
+    background-color: var(--white);
+}
+
+.itinerary-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.day-card {
+    background-color: var(--cream);
+    padding: 2rem;
+    border-left: 3px solid var(--golden);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.day-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(58, 75, 58, 0.08);
+}
+
+.day-number {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--golden);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.day-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.5px;
+}
+
+.day-location {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sand);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.day-card p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--charcoal);
+    font-weight: 300;
+}
+
+.day-lodge {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(58, 75, 58, 0.08);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: var(--golden);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.day-lodge::before {
+    content: '⌂';
+    font-size: 0.9rem;
+}
+
+/* ── Includes Section ──────────────────────────────────────── */
+.includes-section {
+    padding: 6rem 5%;
+}
+
+.includes-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.includes-col h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.includes-col .divider {
+    margin: 0 0 1.5rem;
+}
+
+.includes-list {
+    list-style: none;
+    padding: 0;
+}
+
+.includes-list li {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 0.7rem 0 0.7rem 2rem;
+    position: relative;
+    border-bottom: 1px solid rgba(58, 75, 58, 0.07);
+}
+
+.includes-list.included li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--forest);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.includes-list.excluded li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--sand);
+    font-weight: 400;
+}
+
+/* ── Pack Section ──────────────────────────────────────────── */
+.pack-section {
+    padding: 6rem 5%;
+    background-color: var(--white);
+}
+
+.pack-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.pack-text p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--charcoal);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+
+.pack-list {
+    list-style: none;
+    padding: 0;
+    columns: 2;
+    column-gap: 2rem;
+}
+
+.pack-list li {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    font-weight: 300;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    break-inside: avoid;
+    border-bottom: 1px solid rgba(58, 75, 58, 0.06);
+}
+
+.pack-list li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--golden);
+    font-size: 1.4rem;
+    line-height: 1.2;
+}
+
+/* ── Photo Strip ───────────────────────────────────────────── */
+.photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 380px;
+}
+
+.photo-strip-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-strip-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.photo-strip-item:hover img {
+    transform: scale(1.04);
+}
+
+/* ── CTA Section ───────────────────────────────────────────── */
+.cta-section {
+    padding: 7rem 5%;
+    background-image: linear-gradient(to bottom, rgba(20,30,20,0.72), rgba(20,30,20,0.72)), url('/LeopardOnTree.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--sand);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1.1rem 2.5rem;
+    background-color: var(--golden);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--cream);
+    color: var(--forest);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 1.1rem 2.5rem;
+    background-color: transparent;
+    border: 1px solid var(--sand);
+    color: var(--sand);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--cream);
+    border-color: var(--cream);
+    color: var(--forest);
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+    background-color: var(--charcoal);
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+footer p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--sand);
+    letter-spacing: 1px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .overview-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .includes-grid,
+    .pack-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .stats-inner {
+        gap: 1.5rem;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .itinerary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pack-list {
+        columns: 1;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+
+    .photo-strip {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .photo-strip-item {
+        height: 260px;
+    }
+}
