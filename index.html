@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christine Khomyk Photography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%; height: 100vh;
+            overflow: hidden;
+            background: #050808;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ── STAGE ── */
+        .stage {
+            position: relative;
+            width: 100vw; height: 100vh;
+            display: flex;
+        }
+
+        /* ── PANELS ── */
+        .panel {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            flex: 1;
+            cursor: pointer;
+            transition: flex 0.78s cubic-bezier(0.77, 0, 0.175, 1),
+                        clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            outline: none;
+        }
+
+        /* Entry: slide in from outside */
+        #wildlife { clip-path: inset(0 100% 0 0); }
+        #car      { clip-path: inset(0 0 0 100%); }
+        #wildlife.entered,
+        #car.entered { clip-path: inset(0 0 0 0); }
+
+        /* Hover expansion */
+        .stage:has(#wildlife:hover) #wildlife { flex: 1.3; }
+        .stage:has(#wildlife:hover) #car      { flex: 0.7; }
+        .stage:has(#car:hover) #car           { flex: 1.3; }
+        .stage:has(#car:hover) #wildlife      { flex: 0.7; }
+
+        /* ── BACKGROUNDS ── */
+        .panel-bg {
+            position: absolute; inset: 0;
+            pointer-events: none;
+        }
+
+                        #wildlife .panel-bg {
+            background: linear-gradient(155deg, #3E5240 0%, #4E6850 45%, #587A5A 100%);
+        }
+
+                        #car .panel-bg {
+            background: linear-gradient(155deg, #0E1628 0%, #152036 45%, #1A2844 100%);
+        }
+
+        /* Vignette */
+        .panel-vignette {
+            position: absolute; inset: 0;
+            pointer-events: none; z-index: 2;
+        }
+
+        #wildlife .panel-vignette {
+            background:
+                linear-gradient(to right, rgba(4,7,4,.55) 0%, rgba(4,7,4,.08) 52%, transparent 100%),
+                linear-gradient(to top, rgba(4,7,4,.6) 0%, transparent 58%);
+        }
+
+        #car .panel-vignette {
+            background:
+                linear-gradient(to left, rgba(4,4,8,.55) 0%, rgba(4,4,8,.08) 52%, transparent 100%),
+                linear-gradient(to top, rgba(4,4,8,.6) 0%, transparent 58%);
+        }
+
+        /* ── GIANT BG LETTERFORM ── */
+        .bg-letter {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 200;
+            font-size: clamp(20rem, 38vw, 36rem);
+            line-height: 1;
+            pointer-events: none;
+            z-index: 3;
+            letter-spacing: -0.06em;
+            white-space: nowrap;
+            top: 48%;
+            transform: translateY(-52%);
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        #wildlife .bg-letter {
+            color: #D4A76A;
+            left: -0.04em;
+        }
+
+        #car .bg-letter {
+            color: #8B9AB5;
+            right: -0.04em;
+        }
+
+        .bg-letter.visible { opacity: 0.04; }
+        #wildlife:hover .bg-letter { opacity: 0.07; }
+        #car:hover .bg-letter { opacity: 0.07; }
+
+        /* ── PARTICLE CANVAS ── */
+        .p-canvas {
+            position: absolute; inset: 0;
+            z-index: 1; pointer-events: none;
+        }
+
+        /* ── PANEL CONTENT ── */
+        .panel-content {
+            position: absolute; inset: 0; z-index: 5;
+            display: flex; flex-direction: column;
+            justify-content: flex-end;
+            padding: 3.5rem 4rem 4.5rem;
+        }
+
+        #wildlife .panel-content { align-items: flex-start; }
+        #car .panel-content      { align-items: flex-end; text-align: right; }
+
+        /* All content items share reveal logic */
+        .reveal {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.48s ease, transform 0.48s ease;
+        }
+
+        .reveal-1 { transition-delay: 0.00s; }
+        .reveal-2 { transition-delay: 0.07s; }
+        .reveal-3 { transition-delay: 0.14s; }
+        .reveal-4 { transition-delay: 0.21s; }
+
+        #wildlife:hover .reveal,
+        #car:hover .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel-eyebrow {
+            font-size: 0.52rem;
+            font-weight: 400;
+            letter-spacing: 0.42em;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+
+        #wildlife .panel-eyebrow { color: rgba(212,167,106,.75); }
+        #car .panel-eyebrow      { color: rgba(139,154,181,.75); }
+
+        .panel-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 200;
+            font-size: clamp(4rem, 8.5vw, 8.5rem);
+            line-height: 0.88;
+            color: #EDE8DF;
+            letter-spacing: -0.03em;
+        }
+
+        .panel-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-style: italic;
+            font-size: clamp(0.9rem, 1.6vw, 1.35rem);
+            margin-top: 1rem;
+        }
+
+        #wildlife .panel-sub { color: rgba(212,167,106,.6); }
+        #car .panel-sub      { color: rgba(139,154,181,.6); }
+
+        .panel-cta {
+            margin-top: 1.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.55rem;
+            font-weight: 400;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        #wildlife .panel-cta { color: #D4A76A; }
+        #car .panel-cta      { color: #8B9AB5; }
+
+        .cta-line {
+            display: block;
+            height: 1px;
+            width: 34px;
+            background: currentColor;
+            position: relative;
+            transition: width 0.35s ease;
+            flex-shrink: 0;
+        }
+
+        .panel-cta:hover .cta-line { width: 52px; }
+
+        .cta-line::after {
+            content: '';
+            position: absolute;
+            top: -3.5px;
+            width: 8px; height: 8px;
+            border-top: 1px solid currentColor;
+            border-right: 1px solid currentColor;
+        }
+
+        #wildlife .cta-line::after { right: 0; transform: rotate(45deg); }
+        #car .cta-line::after      { left: 0;  transform: rotate(-135deg); }
+
+        /* ── DIVIDER ── */
+        .divider {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 50%;
+            width: 0; z-index: 20;
+            pointer-events: none;
+            transform: translateX(-50%);
+            transition: left 0.78s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .stage:has(#wildlife:hover) .divider { left: 65%; }
+        .stage:has(#car:hover) .divider      { left: 35%; }
+
+        .divider-line {
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 1px;
+            transform-origin: top center;
+            transform: scaleY(0);
+            transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(212,167,106,.18) 20%,
+                rgba(237,232,223,.52) 50%,
+                rgba(139,154,181,.18) 80%,
+                transparent 100%
+            );
+        }
+
+        .divider-line.drawn { transform: scaleY(1); }
+
+        /* Name on divider */
+        .identity {
+            position: absolute;
+            top: 50%; left: 0;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.55s ease;
+        }
+
+        .identity.visible { opacity: 1; }
+
+        .stage:has(#wildlife:hover) .identity,
+        .stage:has(#car:hover) .identity { opacity: 0; }
+
+        .id-name {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: clamp(1.2rem, 2.4vw, 2.1rem);
+            color: rgba(237,232,223,.88);
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .id-rule {
+            display: block;
+            width: 28px; height: 1px;
+            background: rgba(237,232,223,.3);
+            margin: 0.7rem auto;
+        }
+
+        .id-sub {
+            display: block;
+            font-size: 0.44rem;
+            font-weight: 300;
+            letter-spacing: 0.6em;
+            text-transform: uppercase;
+            color: rgba(237,232,223,.52);
+        }
+
+        /* Subtle idle hover hint (before user discovers) */
+        .hint {
+            position: absolute;
+            bottom: 2.2rem;
+            left: 0; right: 0;
+            text-align: center;
+            font-size: 0.42rem;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: rgba(237,232,223,.45);
+            z-index: 21;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .hint.visible { opacity: 1; }
+        .stage:has(.panel:hover) .hint { opacity: 0; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 700px) {
+            html, body { overflow: hidden; }
+
+            .stage { flex-direction: column; }
+
+            .panel {
+                flex: 1;
+                transition: flex 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+
+            /* Entry: slide from top/bottom instead */
+            #wildlife { clip-path: inset(0 0 100% 0); }
+            #car      { clip-path: inset(100% 0 0 0); }
+            #wildlife.entered,
+            #car.entered { clip-path: inset(0 0 0 0); }
+
+            /* No hover expansion on mobile */
+            .stage:has(#wildlife:hover) #wildlife,
+            .stage:has(#wildlife:hover) #car,
+            .stage:has(#car:hover) #car,
+            .stage:has(#car:hover) #wildlife { flex: 1; }
+
+            /* Always show content on mobile — no hover needed */
+            .reveal {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Divider becomes horizontal */
+            .divider {
+                top: 50%; bottom: auto;
+                left: 0; right: 0;
+                width: 100%; height: 0;
+                transform: translateY(-50%);
+                transition: none;
+            }
+
+            .stage:has(#wildlife:hover) .divider,
+            .stage:has(#car:hover) .divider { left: 0; top: 50%; }
+
+            .divider-line {
+                top: 0; left: 0; right: 0;
+                width: 100%; height: 1px;
+                bottom: auto;
+                transform-origin: left center;
+                background: linear-gradient(
+                    to right,
+                    transparent 0%,
+                    rgba(212,167,106,.18) 20%,
+                    rgba(237,232,223,.52) 50%,
+                    rgba(139,154,181,.18) 80%,
+                    transparent 100%
+                );
+            }
+
+            .identity {
+                top: 0; left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .identity.visible { opacity: 1; }
+
+            .stage:has(#wildlife:hover) .identity,
+            .stage:has(#car:hover) .identity { opacity: 1; }
+
+            .id-name { font-size: 0.85rem; letter-spacing: 0.2em; }
+            .id-rule  { margin: 0.4rem auto; }
+            .id-sub   { font-size: 0.38rem; }
+
+            /* Content layout */
+            .panel-content {
+                padding: 2rem 2.2rem 2.5rem;
+                justify-content: flex-end;
+            }
+
+            #wildlife .panel-content { align-items: flex-start; justify-content: flex-start; padding-top: 2.5rem; }
+            #car .panel-content      { align-items: flex-end; text-align: right; }
+
+            .panel-title {
+                font-size: clamp(3rem, 12vw, 5rem);
+                line-height: 0.88;
+            }
+
+            .panel-eyebrow { font-size: 0.46rem; margin-bottom: 0.6rem; }
+            .panel-sub     { font-size: 0.85rem; margin-top: 0.6rem; }
+            .panel-cta     { margin-top: 1.2rem; font-size: 0.5rem; }
+
+            /* Bg letter smaller */
+            .bg-letter { font-size: 10rem; }
+
+            /* Vignettes adjusted for vertical layout */
+            #wildlife .panel-vignette {
+                background:
+                    linear-gradient(to bottom, rgba(4,7,4,.55) 0%, transparent 50%),
+                    linear-gradient(to top, rgba(4,7,4,.7) 0%, transparent 55%);
+            }
+
+            #car .panel-vignette {
+                background:
+                    linear-gradient(to bottom, rgba(4,4,8,.55) 0%, transparent 50%),
+                    linear-gradient(to top, rgba(4,4,8,.7) 0%, transparent 55%);
+            }
+
+            /* Hide hint on mobile */
+            .hint { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; animation: none !important; }
+            #wildlife, #car { clip-path: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+    <!-- WILDLIFE -->
+    <div class="panel" id="wildlife"
+         role="link" tabindex="0"
+         aria-label="Enter Wildlife Photography"
+         onclick="location.href='./index.html'">
+        <div class="panel-bg"></div>
+        <canvas class="p-canvas" id="cv-wild"></canvas>
+        <div class="panel-vignette"></div>
+        <div class="bg-letter" id="bg-w">W</div>
+        <div class="panel-content">
+            <span class="panel-eyebrow reveal reveal-1">Photography Expeditions & Fine Art</span>
+            <h2 class="panel-title reveal reveal-2">Wild<br>life</h2>
+            <p class="panel-sub reveal reveal-3">Africa · Great Apes · Savannah</p>
+            <a class="panel-cta reveal reveal-4" href="./index.html" tabindex="-1">
+                Enter
+                <span class="cta-line"></span>
+            </a>
+        </div>
+    </div>
+
+    <!-- DIVIDER + IDENTITY -->
+    <div class="divider" id="divider">
+        <div class="divider-line" id="div-line"></div>
+        <div class="identity" id="identity">
+            <span class="id-name">Christine Khomyk</span>
+            <span class="id-rule"></span>
+            <span class="id-sub">Photography</span>
+        </div>
+    </div>
+
+    <!-- CARS -->
+    <div class="panel" id="car"
+         role="link" tabindex="0"
+         aria-label="Enter Automotive Photography"
+         onclick="location.href='./cars/index.html'">
+        <div class="panel-bg"></div>
+        <canvas class="p-canvas" id="cv-car"></canvas>
+        <div class="panel-vignette"></div>
+        <div class="bg-letter" id="bg-a">A</div>
+        <div class="panel-content">
+            <span class="panel-eyebrow reveal reveal-1">Automotive & Motorsport</span>
+            <h2 class="panel-title reveal reveal-2">Auto<br>motive</h2>
+            <p class="panel-sub reveal reveal-3">Cars · Circuits · Precision</p>
+            <a class="panel-cta reveal reveal-4" href="./cars/index.html" tabindex="-1">
+                <span class="cta-line"></span>
+                Enter
+            </a>
+        </div>
+    </div>
+
+    <!-- Idle hint -->
+    <div class="hint" id="hint">Hover to explore</div>
+
+</div>
+
+<script>
+(function () {
+
+    // ── ENTRY SEQUENCE ──
+    function enter() {
+        const wild = document.getElementById('wildlife');
+        const car  = document.getElementById('car');
+
+        requestAnimationFrame(() => {
+            // stagger panels slightly
+            setTimeout(() => wild.classList.add('entered'), 120);
+            setTimeout(() => car.classList.add('entered'),  200);
+
+            // divider draws
+            setTimeout(() => {
+                document.getElementById('div-line').classList.add('drawn');
+            }, 680);
+
+            // name fades in
+            setTimeout(() => {
+                document.getElementById('identity').classList.add('visible');
+                // bg letters
+                document.getElementById('bg-w').classList.add('visible');
+                document.getElementById('bg-a').classList.add('visible');
+            }, 1050);
+
+            // hint appears
+            setTimeout(() => {
+                document.getElementById('hint').classList.add('visible');
+            }, 2200);
+        });
+    }
+
+    window.addEventListener('load', enter);
+
+    // Keyboard navigation
+    document.getElementById('wildlife').addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') location.href = './index.html';
+    });
+    document.getElementById('car').addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') location.href = './cars/index.html';
+    });
+
+    // ── PARTICLES ──
+    function initParticles() {
+        const canvases = {
+            wild: { el: document.getElementById('cv-wild'), type: 'wild' },
+            car:  { el: document.getElementById('cv-car'),  type: 'car'  },
+        };
+
+        // Resize canvas to its CSS size
+        function resizeCanvas(c) {
+            const rect = c.el.parentElement.getBoundingClientRect();
+            c.el.width  = rect.width  || c.el.offsetWidth;
+            c.el.height = rect.height || c.el.offsetHeight;
+        }
+
+        // Wildlife: warm gold dust motes floating up
+        function makeWildParticle() {
+            return {
+                x: Math.random(),
+                y: Math.random() * 0.9 + 0.1,
+                r: Math.random() * 1.8 + 0.4,
+                a: Math.random() * 0.28 + 0.04,
+                vy: -(Math.random() * 0.00028 + 0.00012),
+                vx: (Math.random() - 0.5) * 0.000085,
+                phase: Math.random() * Math.PI * 2,
+                freq: Math.random() * 0.012 + 0.006,
+            };
+        }
+
+        const wildParts = Array.from({ length: 22 }, makeWildParticle);
+
+        // Car: horizontal silver light streaks
+        function makeCarStreak() {
+            const dir = Math.random() > 0.5 ? 1 : -1;
+            return {
+                x:   (dir > 0 ? -0.15 : 1.15),
+                y:   Math.random(),
+                len: Math.random() * 0.1 + 0.04,
+                a:   Math.random() * 0.13 + 0.03,
+                vx:  dir * (Math.random() * 0.0018 + 0.0008),
+                w:   Math.random() > 0.75 ? 1.4 : 0.7,
+                dir,
+            };
+        }
+
+        const carStreaks = Array.from({ length: 12 }, makeCarStreak);
+
+        let frame = 0;
+
+        function tick() {
+            frame++;
+
+            // Resize every 120 frames
+            if (frame % 120 === 0) {
+                resizeCanvas(canvases.wild);
+                resizeCanvas(canvases.car);
+            }
+
+            // ── Wild canvas ──
+            const cw = canvases.wild.el;
+            const xw = cw.getContext('2d');
+            xw.clearRect(0, 0, cw.width, cw.height);
+
+            wildParts.forEach(p => {
+                p.y += p.vy;
+                p.x += p.vx + Math.sin(frame * p.freq + p.phase) * 0.00006;
+
+                // Reset when off-screen or faded
+                if (p.y < -0.05 || p.x < -0.05 || p.x > 1.05) {
+                    Object.assign(p, makeWildParticle());
+                    p.y = 1.0;
+                }
+
+                // Fade near edges
+                const edgeFade = Math.min(p.y * 8, 1) * Math.min((1 - p.y) * 5, 1);
+
+                xw.beginPath();
+                xw.arc(p.x * cw.width, p.y * cw.height, p.r, 0, Math.PI * 2);
+                xw.fillStyle = `rgba(212,167,106,${p.a * edgeFade})`;
+                xw.fill();
+            });
+
+            // ── Car canvas ──
+            const cc = canvases.car.el;
+            const xc = cc.getContext('2d');
+            xc.clearRect(0, 0, cc.width, cc.height);
+
+            carStreaks.forEach(s => {
+                s.x += s.vx;
+
+                // Reset when out of bounds
+                if (s.dir > 0 && s.x > 1.15) Object.assign(s, makeCarStreak());
+                if (s.dir < 0 && s.x < -0.15) Object.assign(s, makeCarStreak());
+
+                const x1 = s.x * cc.width;
+                const x2 = (s.x - s.vx * s.len / Math.abs(s.vx)) * cc.width;
+                const y  = s.y * cc.height;
+
+                const g = xc.createLinearGradient(x2, y, x1, y);
+                g.addColorStop(0,   'rgba(139,154,181,0)');
+                g.addColorStop(0.5, `rgba(139,154,181,${s.a})`);
+                g.addColorStop(1,   'rgba(139,154,181,0)');
+
+                xc.beginPath();
+                xc.moveTo(x1, y);
+                xc.lineTo(x2, y);
+                xc.strokeStyle = g;
+                xc.lineWidth = s.w;
+                xc.stroke();
+            });
+
+            requestAnimationFrame(tick);
+        }
+
+        // Init sizes then start
+        resizeCanvas(canvases.wild);
+        resizeCanvas(canvases.car);
+        window.addEventListener('resize', () => {
+            resizeCanvas(canvases.wild);
+            resizeCanvas(canvases.car);
+        });
+
+        setTimeout(() => requestAnimationFrame(tick), 350);
+    }
+
+    initParticles();
+
+})();
+</script>
+</body>
+</html>
