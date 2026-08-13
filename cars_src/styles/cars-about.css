@@ -1,3 +1,9 @@
+@media(max-width:1024px){
+  .page-hero{height:50vh;min-height:320px;}
+  .split-section{grid-template-columns:1fr 1fr;}
+  .gear-grid{grid-template-columns:1fr 1fr;}
+  .gear-grid-4{grid-template-columns:repeat(2,1fr);}
+}
 /*
  * cars-about.css
  * Combined About page — The Photographer + The Equipment
@@ -377,7 +383,9 @@ footer p {
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 900px) {
+@media(max-width:820px) {
+  .page-hero{padding-bottom:3rem;}
+  .content-section{padding:3.5rem 4%;}
     .split-section { grid-template-columns: 1fr; }
     .split-content { border-right: none; border-bottom: 1px solid rgba(255,98,0,.08); }
     .gear-grid { grid-template-columns: 1fr; }
@@ -385,7 +393,7 @@ footer p {
     .social-links { gap: 2rem; }
 }
 
-@media (max-width: 600px) {
+@media(max-width:425px) {
     .page-hero { height: 50vh; min-height: 300px; }
     .gear-grid-4 { grid-template-columns: 1fr; }
 }
