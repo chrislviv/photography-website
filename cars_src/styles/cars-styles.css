@@ -1,0 +1,94 @@
+/*
+ * cars-styles.css
+ * Base styles for the Automotive section — shared across all cars pages.
+ * Nav, footer, reset, CSS variables.
+ */
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0A0E1A;--s1:#0F1628;--s2:#141C2E;
+  --accent:#FF6200;--text:#F4F0EC;--muted:#546070;
+  --font-display:"Cormorant Garamond",serif;
+  --font-body:"Montserrat",sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;}
+
+/* ── HAMBURGER / MOBILE NAV ── */
+#nav-toggle{display:none;}
+.hamburger{
+  position:fixed;top:1.1rem;right:1.5rem;z-index:500;
+  display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;
+}
+.hamburger span{display:block;width:24px;height:1px;background:var(--text);transition:all .3s;}
+#nav-toggle:checked ~ .hamburger span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+#nav-toggle:checked ~ .hamburger span:nth-child(2){opacity:0;}
+#nav-toggle:checked ~ .hamburger span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
+.overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;
+  opacity:0;transition:opacity .3s;
+}
+#nav-toggle:checked ~ .overlay{display:block;opacity:1;}
+.nav-drawer{
+  position:fixed;top:0;right:-100%;width:280px;height:100%;
+  background:var(--bg);border-left:1px solid rgba(255,98,0,.15);
+  z-index:400;transition:right .35s cubic-bezier(.77,0,.18,1);
+  display:flex;flex-direction:column;padding:5rem 2rem 3rem;gap:1.5rem;
+  overflow-y:auto;
+}
+#nav-toggle:checked ~ .nav-drawer{right:0;}
+.nav-drawer a{
+  font-size:.7rem;font-weight:300;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--text);text-decoration:none;padding:.4rem 0;
+  border-bottom:1px solid rgba(255,98,0,.08);
+}
+.nav-drawer a:hover{color:var(--accent);}
+
+/* ── DESKTOP NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(10,14,26,.96);
+  border-bottom:1px solid rgba(255,98,0,.12);
+  backdrop-filter:blur(12px);
+}
+.nav-container{
+  max-width:1440px;margin:0 auto;padding:0 2.5rem;
+  height:68px;display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--font-display);font-weight:500;font-size:1.3rem;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;white-space:nowrap;}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{
+  font-size:.58rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(244,240,236,.6);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.nav-links .nav-social-icon svg{display:block;}
+.nav-switch{
+  border:1px solid rgba(255,98,0,.3);padding:.35rem .85rem;
+  color:var(--muted);font-size:.52rem;letter-spacing:.28em;
+  text-transform:uppercase;text-decoration:none;transition:all .2s;
+}
+.nav-switch:hover{color:var(--accent);border-color:var(--accent);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .editorial{grid-template-columns:1fr;}
+  .ed-photo{min-height:320px;}
+  .ed-text{padding:3.5rem 2rem;}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:44vw 44vw;gap:3px;}
+  .pg-v3{display:none;}
+  .pg-h1{grid-column:span 2;}
+  .wwm-grid{grid-template-columns:1fr;}
+  .wwm-item{border-right:none;border-bottom:1px solid rgba(255,98,0,.1);}
+  .wwm-item:last-child{border-bottom:none;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:600px){
+  .hero-title{font-size:clamp(4rem,18vw,6rem);}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:44vw 44vw;gap:3px;}
+  .pg-h1,.pg-sq{grid-column:span 1;}
+  .pg-v2{display:none;}
+}
