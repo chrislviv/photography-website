@@ -145,3 +145,5 @@ nav{
   transition:color .2s;
 }
 .dropdown-mobile a:hover{color:var(--accent);}
+
+.section-heading-rule{flex:1;height:1px;background:rgba(255,98,0,.18);}
