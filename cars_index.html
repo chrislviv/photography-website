@@ -19,8 +19,23 @@
 <label class="overlay" for="nav-toggle"></label>
 <aside class="nav-drawer">
   <a href="./cars_index.html">Home</a>
-  <a href="./cars_about.html">About</a>
-  <a href="./cars_portfolio.html">Portfolio</a>
+  <div class="has-dropdown-mobile">
+    <input type="checkbox" id="dropdown-about-cars-mobile">
+    <label for="dropdown-about-cars-mobile">About</label>
+    <div class="dropdown-mobile">
+      <a href="./cars_about.html#photographer">The Photographer</a><br>
+      <a href="./cars_about.html#equipment">The Equipment</a>
+    </div>
+  </div>
+  <div class="has-dropdown-mobile">
+    <input type="checkbox" id="dropdown-portfolio-cars-mobile">
+    <label for="dropdown-portfolio-cars-mobile">Portfolio</label>
+    <div class="dropdown-mobile">
+      <a href="./cars_portfolio.html#super-hyper">Super &amp; Hyper Cars</a><br>
+      <a href="./cars_portfolio.html#racing">Racing Cars</a><br>
+      <a href="./cars_portfolio.html#classic">Classic Cars</a>
+    </div>
+  </div>
   <a href="./cars_contact.html">Contact</a>
   <a href="./wildlife_index.html">&#x2197; Wildlife</a>
   <a href="https://instagram.com/christinekhomyk.wild" target="_blank">
@@ -39,8 +54,23 @@
     <a href="./cars_index.html" class="logo">Christine Khomyk</a>
     <ul class="nav-links">
       <li><a href="./cars_index.html" class="active">Home</a></li>
-      <li><a href="./cars_about.html">About</a></li>
-      <li><a href="./cars_portfolio.html">Portfolio</a></li>
+      <li class="nav-item">
+        <a href="./cars_about.html" class="dropdown-toggle">About</a>
+        <div class="dropdown-backdrop-dark"></div>
+        <div class="dropdown-menu-dark">
+          <a href="./cars_about.html#photographer">The Photographer</a>
+          <a href="./cars_about.html#equipment">The Equipment</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="./cars_portfolio.html" class="dropdown-toggle">Portfolio</a>
+        <div class="dropdown-backdrop-dark"></div>
+        <div class="dropdown-menu-dark">
+          <a href="./cars_portfolio.html#super-hyper">Super &amp; Hyper Cars</a>
+          <a href="./cars_portfolio.html#racing">Racing Cars</a>
+          <a href="./cars_portfolio.html#classic">Classic Cars</a>
+        </div>
+      </li>
       <li><a href="./cars_contact.html">Contact</a></li>
       <li><a href="./wildlife_index.html" class="nav-switch">&#x2197; Wildlife</a></li>
       <li><a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="nav-social-icon">
@@ -117,7 +147,6 @@
       <div class="section-sub-label">Featured</div>
       <h2 class="section-heading">Selected Work</h2>
     </div>
-    <div class="section-heading-rule"></div>
   </div>
   <div style="width:80px;height:1px;background:var(--accent);margin:1rem 0 0;"></div>
 </div>
@@ -191,6 +220,6 @@
 </footer>
 
 
-<script type="module" src="./cars_src/index.ts"></script>
+<script type="module" src="./cars_src/index.js"></script>
 </body>
 </html>
