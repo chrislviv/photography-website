@@ -77,11 +77,6 @@
   display:flex;flex-direction:column;justify-content:center;
   border-left:1px solid rgba(255,98,0,.08);
 }
-.ed-ghost-num{
-  font-family:var(--font-display);font-weight:200;font-size:9rem;
-  color:rgba(255,98,0,.05);line-height:1;margin-bottom:-3rem;
-  user-select:none;
-}
 .ed-label{
   font-size:.48rem;font-weight:400;letter-spacing:.48em;text-transform:uppercase;
   color:var(--accent);margin-bottom:1.5rem;
@@ -91,7 +86,7 @@
   font-size:clamp(2.5rem,4vw,3.5rem);line-height:1.05;
   margin-bottom:1.5rem;
 }
-.ed-rule{width:1px;height:48px;background:rgba(255,98,0,.25);margin-bottom:1.8rem;}
+.ed-rule{width:1px;height:48px;background:var(--accent);margin-bottom:1.8rem;}
 .ed-body{
   font-size:.75rem;font-weight:300;line-height:2;
   color:var(--muted);max-width:420px;
@@ -101,7 +96,7 @@
 .selected-section{padding:5rem 2.5rem 0;max-width:1440px;margin:0 auto;}
 .section-heading-row{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;}
 .section-heading{font-family:var(--font-display);font-weight:200;font-size:clamp(2rem,3.5vw,3rem);}
-.section-heading-rule{flex:1;height:1px;background:rgba(255,98,0,.18);}
+.section-heading-rule{flex:1;height:1px;background:rgba(255,98,0,.4);}
 .section-sub-label{font-size:.48rem;letter-spacing:.42em;text-transform:uppercase;color:var(--accent);}
 
 /* ── PHOTO GRID ── */
@@ -195,3 +190,70 @@ footer p{font-size:.52rem;letter-spacing:.18em;color:var(--muted);}
 .footer-links{display:flex;gap:2rem;}
 .footer-links a{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;}
 .footer-links a:hover{color:var(--accent);}
+.wwm-title::after{content:"";display:block;width:80px;height:1px;background:var(--accent);margin:1rem auto 0;}
+
+/* ── RESPONSIVE ── */
+
+/* iPad landscape */
+@media(max-width:1024px){
+  .hero-title{font-size:clamp(4rem,10vw,8rem);}
+  .editorial{grid-template-columns:1fr 1fr;}
+  .ed-text{padding:4rem 3rem;}
+  .wwm-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+/* iPad portrait / large mobile */
+@media(max-width:820px){
+  .hero{padding-top:68px;}
+  .hero-title{font-size:clamp(3.5rem,14vw,6rem);}
+  .hero-eyebrow{margin-bottom:1rem;}
+  .hero-divider{height:36px;margin:1.5rem auto;}
+  .hero-sub{font-size:.8rem;}
+  .hero-cta{font-size:.52rem;}
+
+  .ticker{height:44px;}
+
+  .editorial{grid-template-columns:1fr;}
+  .ed-photo{min-height:280px;}
+  .ed-text{padding:3rem 1.5rem;}
+  .ed-label{margin-bottom:1rem;}
+  .ed-heading{font-size:clamp(2rem,8vw,3rem);}
+
+  .selected-section{padding:3.5rem 1.5rem 0;}
+  .section-sub-label{font-size:.44rem;}
+  .section-heading{font-size:clamp(1.8rem,6vw,2.5rem);}
+
+  .photo-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+    gap:2px;
+  }
+  .pg-v1,.pg-v2{aspect-ratio:3/4;}
+  .pg-v3{display:none;}
+  .pg-h1{grid-column:span 2;aspect-ratio:16/9;}
+  .pg-sq{aspect-ratio:1/1;}
+
+  .portfolio-cta{padding:2.5rem 1.5rem;}
+
+  .wwm-section{padding:3.5rem 1.5rem;}
+  .wwm-title{font-size:clamp(2rem,7vw,3rem);}
+  .wwm-sub{font-size:.5rem;}
+  .wwm-grid{grid-template-columns:1fr;}
+  .wwm-item{border-right:none;border-bottom:1px solid rgba(255,98,0,.1);padding:2rem 1.5rem;}
+  .wwm-item:last-child{border-bottom:none;}
+  .wwm-name{font-size:1.1rem;}
+
+  footer{flex-direction:column;text-align:center;gap:.5rem;}
+}
+
+/* Small phones */
+@media(max-width:425px){
+  .hero-title{font-size:clamp(3rem,16vw,4.5rem);}
+  .photo-grid{grid-template-columns:1fr;}
+  .pg-v1,.pg-v2{aspect-ratio:4/3;}
+  .pg-h1{grid-column:span 1;aspect-ratio:16/9;}
+  .pg-sq{aspect-ratio:4/3;}
+  .ed-text{padding:2.5rem 1rem;}
+  .selected-section{padding:3rem 1rem 0;}
+  .wwm-section{padding:3rem 1rem;}
+}
