@@ -19,6 +19,7 @@ export default defineConfig({
         wildlifeExpeditions: 'wildlife_expeditions.html',
         // Cars
         carsHome: 'cars_index.html',
+        carsAbout: 'cars_about.html',
         carsAboutEquipment: 'cars_aboutEquipment.html',
         carsAboutPhotographer: 'cars_aboutPhotographer.html',
         carsPortfolio: 'cars_portfolio.html',
