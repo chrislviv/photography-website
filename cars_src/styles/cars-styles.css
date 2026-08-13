@@ -57,7 +57,7 @@ nav{
 }
 .logo{
   font-family:var(--font-display);font-weight:500;font-size:1.3rem;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;white-space:nowrap;}
-.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links{display:flex;align-items:stretch;gap:2.5rem;list-style:none;height:68px;}
 .nav-links a{
   font-size:.58rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;
   color:rgba(244,240,236,.6);text-decoration:none;transition:color .2s;
@@ -147,3 +147,7 @@ nav{
 .dropdown-mobile a:hover{color:var(--accent);}
 
 .section-heading-rule{flex:1;height:1px;background:rgba(255,98,0,.18);}
+
+/* Stretch nav-items to full nav height so hover zone bridges to backdrop */
+.nav-item{display:flex;align-items:center;position:relative;}
+.nav-links > li{display:flex;align-items:center;}
