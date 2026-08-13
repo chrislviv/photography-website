@@ -231,6 +231,7 @@ footer p{font-size:.52rem;letter-spacing:.18em;color:var(--muted);}
   .pg-v1,.pg-v2{aspect-ratio:3/4;}
   .pg-v3{display:none;}
   .pg-h1{grid-column:span 2;aspect-ratio:16/9;}
+  .pg-sq{display:none;}
   .pg-sq{aspect-ratio:1/1;}
 
   .portfolio-cta{padding:2.5rem 1.5rem;}
@@ -252,6 +253,7 @@ footer p{font-size:.52rem;letter-spacing:.18em;color:var(--muted);}
   .photo-grid{grid-template-columns:1fr;}
   .pg-v1,.pg-v2{aspect-ratio:4/3;}
   .pg-h1{grid-column:span 1;aspect-ratio:16/9;}
+  .pg-sq{display:none;}
   .pg-sq{aspect-ratio:4/3;}
   .ed-text{padding:2.5rem 1rem;}
   .selected-section{padding:3rem 1rem 0;}
