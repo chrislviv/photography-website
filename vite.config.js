@@ -20,8 +20,9 @@ export default defineConfig({
         // Cars
         carsHome: 'cars_index.html',
         carsAbout: 'cars_about.html',
-        carsPortfolio: 'cars_portfolio.html',
-        carsPortfolio2: 'cars_portfolio2.html',
+        carsEngineeredObsession: 'cars_engineered_obsession.html',
+        carsOnTheLimit: 'cars_on_the_limit.html',
+        carsLivingLegends: 'cars_living_legends.html',
         carsContact: 'cars_contact.html',
       }
     }
