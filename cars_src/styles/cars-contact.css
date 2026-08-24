@@ -188,10 +188,12 @@ footer p { font-size: .52rem; letter-spacing: .18em; color: var(--muted); }
     .contact-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,98,0,.1); padding-top: 2rem; }
 }
 
-@media(max-width:1024px){
+@media(min-width:821px) and (max-width:1024px){
   .cards-grid{grid-template-columns:1fr 1fr;}
   .contact-section{gap:3rem;}
 }
+
+
 
 @media(max-width:425px){
   .cards-grid{grid-template-columns:1fr;}
