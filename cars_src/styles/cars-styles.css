@@ -126,6 +126,7 @@ nav{
 
 /* Mobile dropdowns */
 .has-dropdown-mobile{position:relative;}
+.has-dropdown-mobile input[type="checkbox"]{display:none;}
 .has-dropdown-mobile > label{
   color:var(--text);text-decoration:none;
   font-family:var(--font-body);font-size:.85rem;
