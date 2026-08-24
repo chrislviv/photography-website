@@ -3,26 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Christine Khomyk Automotive</title>
+<title>About — Christine Khomyk Automotive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./cars_src/styles/cars-styles.css">
-<link rel="stylesheet" href="./cars_src/styles/cars-contact.css">
+<link rel="stylesheet" href="./cars_src/styles/cars-about.css">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
 
 <input type="checkbox" id="nav-toggle">
-<label class="hamburger" for="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+<label class="hamburger" for="nav-toggle" aria-label="Toggle menu">
+  <span></span><span></span><span></span>
+</label>
 <label class="overlay" for="nav-toggle"></label>
 <aside class="nav-drawer">
   <a href="./cars_index.html">Home</a>
   <div class="has-dropdown-mobile">
-    <input type="checkbox" id="dm-about">
+    <input type="checkbox" id="dropdown-about-cars-mobile">
     <div class="dropdown-header">
       <a href="./cars_about.html">About</a>
-      <label for="dm-about" class="dropdown-arrow">&#x25BE;</label>
+      <label for="dropdown-about-cars-mobile" class="dropdown-arrow">&#x25BE;</label>
     </div>
     <div class="dropdown-mobile">
       <a href="./cars_about.html#photographer">The Photographer</a><br>
@@ -30,10 +32,10 @@
     </div>
   </div>
   <div class="has-dropdown-mobile">
-    <input type="checkbox" id="dm-portfolio">
+    <input type="checkbox" id="dropdown-portfolio-cars-mobile">
     <div class="dropdown-header">
       <a href="./cars_portfolio.html">Portfolio</a>
-      <label for="dm-portfolio" class="dropdown-arrow">&#x25BE;</label>
+      <label for="dropdown-portfolio-cars-mobile" class="dropdown-arrow">&#x25BE;</label>
     </div>
     <div class="dropdown-mobile">
       <a href="./cars_portfolio.html">Engineered Obsession</a><br>
@@ -44,12 +46,12 @@
   <a href="./cars_contact.html">Contact</a>
   <a href="./wildlife_index.html">&#x2197; Wildlife</a>
   <a href="https://instagram.com/christinekhomyk.wild" target="_blank">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <rect x="2" y="2" width="20" height="20" rx="5" stroke="#FF6200" stroke-width="1.5"/>
-      <circle cx="12" cy="12" r="5" stroke="#FF6200" stroke-width="1.5"/>
-      <circle cx="17.5" cy="6.5" r="1.2" fill="#FF6200"/>
-    </svg>
-  </a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="#F4F0EC" stroke-width="1.5"/>
+                            <circle cx="12" cy="12" r="5" stroke="#F4F0EC" stroke-width="1.5"/>
+                            <circle cx="17.5" cy="6.5" r="1.2" fill="#F4F0EC"/>
+                        </svg>
+    </a>
 </aside>
 
 <nav>
@@ -58,7 +60,7 @@
     <ul class="nav-links">
       <li><a href="./cars_index.html">Home</a></li>
       <li class="nav-item">
-        <a href="./cars_about.html" class="dropdown-toggle">About</a>
+        <a href="./cars_about.html" class="dropdown-toggle active">About</a>
         <div class="dropdown-backdrop-dark"></div>
         <div class="dropdown-menu-dark">
           <a href="./cars_about.html#photographer">The Photographer</a>
@@ -74,96 +76,178 @@
           <a href="./cars_portfolio.html#living-legends">Living Legends</a>
         </div>
       </li>
-      <li><a href="./cars_contact.html" class="active">Contact</a></li>
+      <li><a href="./cars_contact.html">Contact</a></li>
       <li><a href="./wildlife_index.html" class="nav-switch">&#x2197; Wildlife</a></li>
       <li><a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="nav-social-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
-                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="#F4F0EC" stroke-width="1.5"/>
-                            <circle cx="12" cy="12" r="5" stroke="#F4F0EC" stroke-width="1.5"/>
-                            <circle cx="17.5" cy="6.5" r="1.2" fill="#F4F0EC"/>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="#FF6200" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="5" stroke="#FF6200" stroke-width="1.5"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="#FF6200"/>
+        </svg>
                     </a></li>
     </ul>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="hero-label">Get In Touch</div>
-  <h1>Work<br>With Me</h1>
-  <p class="hero-sub">Available for brand partnerships, private shoots and licensing. Let's create something worth remembering.</p>
+<!-- ── PART 1: THE PHOTOGRAPHER ── -->
+<section id="photographer" class="page-hero">
+  <div class="page-hero-content">
+    <p class="page-hero-label">About</p>
+    <h1>The Photographer</h1>
+    <p class="subtitle">Behind the Lens</p>
+  </div>
 </section>
 
-<div class="cards-section">
-  <div class="cards-grid">
-    <div class="card">
-      <div class="card-num">01</div>
-      <h3 class="card-title">Brand &amp; Editorial</h3>
-      <p class="card-desc">Campaigns, ambassador programs and magazine features with brands and publications that push the standard.</p>
-      <div class="card-tags">
-        <span class="tag">Campaigns</span>
-        <span class="tag">Ambassador</span>
-        <span class="tag">Press</span>
-        <span class="tag">Magazine</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-num">02</div>
-      <h3 class="card-title">Private Shoots</h3>
-      <p class="card-desc">One-on-one sessions for collectors, owners and enthusiasts who want their machine photographed properly.</p>
-      <div class="card-tags">
-        <span class="tag">Collections</span>
-        <span class="tag">Track Days</span>
-        <span class="tag">Events</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-num">03</div>
-      <h3 class="card-title">Prints &amp; Licensing</h3>
-      <p class="card-desc">Limited edition fine art prints and commercial licensing for editorial, publishing and commercial use.</p>
-      <div class="card-tags">
-        <span class="tag">Fine Art</span>
-        <span class="tag">Limited Edition</span>
-        <span class="tag">Licensing</span>
-      </div>
-    </div>
+<section class="content-section">
+  <p>My journey into automotive photography began with a simple obsession: the way light moves across a body panel at dawn. What started as a curiosity became a discipline — learning to read machines the way a wildlife photographer reads an animal. Every car has behaviour, personality, and a decisive moment.</p>
+  <p>Based in Belgium, I shoot supercars, hypercars, and classic machines across Europe. My work spans private collections, track days, and editorial commissions — always chasing the image that makes you feel the machine, not just see it.</p>
+  <p>What drives my automotive photography is the belief that engineered objects carry as much emotion as living ones. A Pagani at golden hour is as much a portrait subject as any predator in the wild. Both require patience, technical precision, and the willingness to wait for the moment when everything aligns.</p>
+  <p>I shoot exclusively in manual mode. Full creative control over every frame — exposure decisions in fading track light, precise focus on a headlight reflection, the exact instant a car exits a corner with the right body lean. Nothing is left to chance.</p>
+</section>
+
+<section class="split-section">
+  <div class="split-content">
+    <h3>My Approach</h3>
+    <div class="divider-left"></div>
+    <p>Automotive photography is 80% preparation. Understanding the light, the location, the car's proportions, the angle that makes a compact car look monumental — this all happens before the shutter fires.</p>
+    <p>Whether I'm at a private collection shoot in Belgium or a track day in Monaco, I approach every session with the same rigour: scout the location, plan for the available light, anticipate the car's movement, and find the angles others walk past.</p>
+    <p>My goal isn't to document machines. It's to create images that make you feel what it's like to stand next to something extraordinary.</p>
   </div>
+  <div class="split-content">
+    <h3>Expertise & Focus</h3>
+    <div class="divider-left"></div>
+    <ul>
+      <li>Supercar &amp; hypercar photography</li>
+      <li>Classic and vintage automotive</li>
+      <li>Track day &amp; motorsport coverage</li>
+      <li>Low-light &amp; golden hour mastery</li>
+      <li>Editorial &amp; commercial commissions</li>
+      <li>Private collection documentation</li>
+    </ul>
+  </div>
+</section>
+
+<section class="quote-section">
+  <blockquote>
+    "A car is only as beautiful as the photographer willing to wait for the right light."
+    <cite>— Christine Khomyk</cite>
+  </blockquote>
+</section>
+
+<!-- ── SECTION DIVIDER ── -->
+<div class="section-divider">
+  <div class="section-divider-line"></div>
+  <span class="section-divider-label">The Equipment</span>
+  <div class="section-divider-line"></div>
 </div>
 
-<div class="contact-section">
-  <div class="contact-left">
-    <h2>Let's Talk</h2>
-    <p>Tell me what you have in mind. I'll get back to you within 48 hours.</p>
+<!-- ── PART 2: THE EQUIPMENT ── -->
+<section id="equipment" class="equipment-intro">
+  <p class="section-subtitle">Tools of the Trade</p>
+  <h2 class="section-title-large">The Equipment</h2>
+  <div class="divider"></div>
+  <p>Great automotive photography demands both artistic vision and technical precision. My equipment choices reflect years of research and real-world use across tracks, private estates, and city streets.</p>
+</section>
+
+<section class="equipment-section">
+  <h2 class="section-title">Primary System</h2>
+  <div class="divider"></div>
+  <div class="gear-grid">
+    <div class="gear-card">
+      <div class="gear-category">Camera Body</div>
+      <h3>Canon R5 Mark II</h3>
+      <p>The core of my system. 45MP full-frame sensor, exceptional autofocus with subject tracking, and the low-light performance to handle underlit garages and dusk track sessions without compromise.</p>
+      <div class="gear-specs">
+        <ul>
+          <li>45MP full-frame sensor</li>
+          <li>Advanced subject tracking AF</li>
+          <li>Up to 30fps electronic shutter</li>
+          <li>Outstanding low-light capability</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-category">Primary Lens</div>
+      <h3>Canon RF 70-200mm f/2.8L</h3>
+      <p>My most-used lens for automotive work. The compression it creates at 200mm makes cars look sculptural. Fast enough for moving subjects in any light, sharp enough to resolve every panel gap.</p>
+      <div class="gear-specs">
+        <ul>
+          <li>f/2.8 throughout the range</li>
+          <li>Exceptional sharpness wide open</li>
+          <li>Fast, silent autofocus</li>
+          <li>Weather-sealed construction</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gear-card">
+      <div class="gear-category">Wide Lens</div>
+      <h3>Canon RF 24-70mm f/2.8L</h3>
+      <p>For environmental context shots, tight garages, and the dramatic wide-angle perspectives that put a car in its surroundings. Essential for editorial work where location is part of the story.</p>
+      <div class="gear-specs">
+        <ul>
+          <li>Versatile everyday zoom</li>
+          <li>Constant f/2.8 aperture</li>
+          <li>Minimal distortion at 24mm</li>
+          <li>L-series build quality</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="contact-right">
-    <a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="social-row">
-      <div class="social-icon-wrap">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+</section>
+
+<section class="equipment-section">
+  <h2 class="section-title">Support &amp; Accessories</h2>
+  <div class="divider"></div>
+  <div class="gear-grid gear-grid-4">
+    <div class="gear-card gear-card-sm">
+      <div class="gear-category">Stability</div>
+      <h3>Carbon Fibre Tripod</h3>
+      <p>For long exposures, light trails, and any situation where absolute stability is non-negotiable.</p>
+    </div>
+    <div class="gear-card gear-card-sm">
+      <div class="gear-category">Filters</div>
+      <h3>ND &amp; Polariser Set</h3>
+      <p>Variable ND for controlling motion blur on moving cars. Polariser for eliminating reflections on glass and paint.</p>
+    </div>
+    <div class="gear-card gear-card-sm">
+      <div class="gear-category">Storage</div>
+      <h3>CFexpress Type B</h3>
+      <p>High-speed cards essential when shooting bursts of fast-moving cars. No bottlenecks, no missed moments.</p>
+    </div>
+    <div class="gear-card gear-card-sm">
+      <div class="gear-category">Editing</div>
+      <h3>Capture One Pro</h3>
+      <p>Superior colour grading for automotive work. The tethering and colour control are unmatched for client shoots.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Social -->
+<section class="social-section">
+  <h3>Follow the Work</h3>
+  <div class="divider"></div>
+  <div class="social-links">
+    <a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="social-link">
+      <div class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <rect x="2" y="2" width="20" height="20" rx="5" stroke="#FF6200" stroke-width="1.5"/>
           <circle cx="12" cy="12" r="5" stroke="#FF6200" stroke-width="1.5"/>
           <circle cx="17.5" cy="6.5" r="1.2" fill="#FF6200"/>
         </svg>
       </div>
-      <div class="social-text">
-        <div class="social-name">Instagram</div>
-        <div class="social-val">@christinekhomyk.wild</div>
-      </div>
-      <span class="social-arr">&#x2197;</span>
+      <span class="social-label">Instagram</span>
     </a>
-    <a href="mailto:christine.khomyk@gmail.com" class="social-row">
-      <div class="social-icon-wrap">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <a href="mailto:christine.khomyk@gmail.com" class="social-link">
+      <div class="social-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <rect x="2" y="6" width="20" height="14" rx="2" stroke="#FF6200" stroke-width="1.5"/>
-          <path d="M2 8 L12 15 L22 8" stroke="#FF6200" stroke-width="1.5"/>
+          <path d="M2 8 L12 15 L22 8" stroke="#FF6200" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
       </div>
-      <div class="social-text">
-        <div class="social-name">Email</div>
-        <div class="social-val">christine.khomyk@gmail.com</div>
-      </div>
-      <span class="social-arr">&#x2197;</span>
+      <span class="social-label">Contact</span>
     </a>
   </div>
-</div>
+</section>
 
 <footer>
   <p>&copy; 2026 Christine Khomyk Automotive Photography. All rights reserved.</p>
