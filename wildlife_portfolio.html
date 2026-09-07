@@ -3,23 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eye to Eye Portfolio - Christine Khomyk</title>
+    <title>Portfolio — Christine Khomyk Wild</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="./src/styles/styles.css">
     <link rel="stylesheet" href="./src/styles/portfolio.css">
-    <link rel="icon" type="image/x-icon" href="/favicon-inverted.ico">
-</head>
-<body>
-    <!-- Development -->
-    <!-- <script type="module" src="./dist/index.js"></script> -->
-    <!-- Staging -->
-    <script type="module" src="./src/index.ts"></script>
-    <!-- Navigation -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        /* ── TRIPTYCH OVERLAY (wildlife colours) ── */
+        .triptych-overlay {
+            position:fixed;inset:0;z-index:2000;
+            display:flex;
+            transition:opacity .7s ease,transform .7s ease;
+        }
+        .triptych-overlay.dismissed {
+            opacity:0;transform:scale(1.03);pointer-events:none;
+        }
+        body.triptych-active nav,
+        body.triptych-active .hamburger,
+        body.triptych-active .overlay-label {
+            display:none !important;
+        }
 
-    <input type="checkbox" id="nav-toggle">
+        .tp {
+            position:relative;height:100%;flex:1;overflow:hidden;
+            cursor:pointer;
+            transition:flex .75s cubic-bezier(.77,0,.175,1);
+            border-right:1px solid rgba(212,167,106,.2);
+        }
+        .tp:last-child{border-right:none;}
+        .tp:hover{flex:1.7;}
+        .triptych-overlay:has(.tp:hover) .tp:not(:hover){flex:0.3;}
+        .triptych-overlay:has(.tp.expanding) .tp:not(.expanding){
+            flex:0!important;opacity:0;transition:flex .4s ease,opacity .3s ease;
+        }
+        .tp.expanding{flex:1!important;}
+
+        .tp-1{background:linear-gradient(155deg,#1A2A1A,#243824,#1C301C);}
+        .tp-2{background:linear-gradient(155deg,#1E2E1A,#283A1E,#1A2C14);}
+
+        .tp-ghost{
+            position:absolute;font-family:"Cormorant Garamond",serif;font-weight:300;
+            font-size:clamp(14rem,22vw,20rem);
+            color:rgba(212,167,106,.04);line-height:1;letter-spacing:-.04em;
+            pointer-events:none;user-select:none;
+            top:45%;transform:translateY(-50%);right:-.04em;
+        }
+        .tp-content{
+            position:absolute;inset:0;
+            display:flex;flex-direction:column;align-items:center;justify-content:center;
+            text-align:center;padding:2rem;
+        }
+        .tp-index{
+            font-size:.46rem;letter-spacing:.5em;text-transform:uppercase;
+            color:#D4A76A;margin-bottom:1.2rem;
+            opacity:0;transform:translateY(8px);
+            transition:opacity .45s,transform .45s;transition-delay:.05s;
+        }
+        .tp-title{
+            font-family:"Cormorant Garamond",serif;font-weight:300;
+            font-size:clamp(2.5rem,5vw,5rem);line-height:.9;letter-spacing:-.02em;
+            color:#F0E6D3 !important;
+            opacity:0;transform:translateY(12px);
+            transition:opacity .45s .1s,transform .45s .1s;
+        }
+        .tp-rule{
+            width:1px;height:0;background:#D4A76A;margin:1.5rem auto;
+            transition:height .45s .15s;
+        }
+        .tp-sub{
+            font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:300;
+            font-size:clamp(.8rem,1.4vw,1.1rem);color:rgba(212,167,106,.6);
+            max-width:280px;line-height:1.6;
+            opacity:0;transform:translateY(8px);
+            transition:opacity .4s .2s,transform .4s .2s;
+        }
+        .tp-cta{
+            margin-top:1.8rem;
+            display:inline-flex;align-items:center;gap:.9rem;
+            font-size:.5rem;letter-spacing:.38em;text-transform:uppercase;color:#D4A76A;
+            opacity:0;transform:translateY(8px);
+            transition:opacity .4s .25s,transform .4s .25s;
+        }
+        .tp-cta .ln{width:28px;height:1px;background:#D4A76A;position:relative;transition:width .3s;}
+        .tp-cta .ln::after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid #D4A76A;border-right:1px solid #D4A76A;transform:rotate(45deg);}
+        .tp:hover .tp-index,.tp:hover .tp-title,.tp:hover .tp-sub,.tp:hover .tp-cta{opacity:1;transform:translateY(0);}
+        .tp:hover .tp-rule{height:44px;}
+        .tp-idle{
+            position:absolute;bottom:3.5rem;left:0;right:0;text-align:center;
+            font-family:"Cormorant Garamond",serif;font-weight:300;
+            font-size:clamp(1.2rem,2.5vw,2rem);letter-spacing:.08em;
+            color:rgba(240,230,211,.4);transition:opacity .35s;
+        }
+        .tp:hover .tp-idle{opacity:0;}
+        .tp-hint{
+            position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+            font-size:.42rem;letter-spacing:.42em;text-transform:uppercase;
+            color:rgba(240,230,211,.45);z-index:2001;pointer-events:none;
+            transition:opacity .4s;
+        }
+        .triptych-overlay:has(.tp:hover) ~ .tp-hint{opacity:0;}
+        .tp-hint.hidden{opacity:0;}
+
+        /* ── MINI NAV ── */
+        .mini-nav{
+            position:fixed;top:48px;left:0;right:0;z-index:90;
+            background:rgba(255,252,247,.97);
+            border-bottom:1px solid rgba(174,122,81,.15);
+            display:flex;align-items:center;justify-content:center;gap:3rem;
+            height:40px;
+            opacity:0;transform:translateY(-40px);
+            transition:opacity .5s ease,transform .5s ease;
+            pointer-events:none;
+        }
+        .mini-nav.show{opacity:1;transform:translateY(0);pointer-events:auto;}
+        .mini-nav a{
+            font-size:.6rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;
+            color:var(--sand);text-decoration:none;transition:color .2s;
+            font-family:var(--font-body);
+        }
+        .mini-nav a:hover,.mini-nav a.active{color:#D4A76A;}
+    </style>
+</head>
+<body class="triptych-active">
+
+<!-- TRIPTYCH -->
+<div class="triptych-overlay" id="triptych">
+    <div class="tp tp-1" onclick="selectCollection('eye-to-eye',this)">
+        <div class="tp-ghost">I</div>
+        <div class="tp-content">
+            <div class="tp-index">Collection 01</div>
+            <h2 class="tp-title">Eye To Eye</h2>
+            <div class="tp-rule"></div>
+            <p class="tp-sub">Intimate encounters — where the wild meets the lens.</p>
+            <span class="tp-cta">Enter <span class="ln"></span></span>
+        </div>
+        <div class="tp-idle">Eye To Eye</div>
+    </div>
+    <div class="tp tp-2" onclick="selectCollection('where-humanity-began',this)">
+        <div class="tp-ghost">II</div>
+        <div class="tp-content">
+            <div class="tp-index">Collection 02</div>
+            <h2 class="tp-title">Where Humanity Began</h2>
+            <div class="tp-rule"></div>
+            <p class="tp-sub">Africa's wild landscapes and the animals that shaped us.</p>
+            <span class="tp-cta">Enter <span class="ln"></span></span>
+        </div>
+        <div class="tp-idle">Where Humanity Began</div>
+    </div>
+</div>
+<div class="tp-hint" id="tp-hint">Hover to explore</div>
+
+<input type="checkbox" id="nav-toggle">
     <label class="hamburger" for="nav-toggle" aria-label="Toggle menu">
       <span></span>
       <span></span>
@@ -40,8 +176,8 @@
             <input type="checkbox" id="dropdown-portfolio-mobile">
             <label for="dropdown-portfolio-mobile">Portfolio</label>
             <div class="dropdown-mobile">
-                <a href="./portfolio.html">Eye To Eye</a><br>
-                <a href="./portfolio2.html">Where Humanity Began</a>
+                <a href="./wildlife_portfolio.html">Eye To Eye</a><br>
+                <a href="./wildlife_portfolio.html#where-humanity-began">Where Humanity Began</a>
             </div>
         </div>
         <a href="https://christinekhomykphotography.zenfoliosite.com/print-shop-1">Print Shop</a>
@@ -87,11 +223,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="./portfolio.html" class="dropdown-toggle">Portfolio</a>
+                    <a href="./wildlife_portfolio.html" class="dropdown-toggle">Portfolio</a>
                     <div class="dropdown-backdrop-dark"></div>
                     <div class="dropdown-menu-dark">
-                        <a href="./portfolio.html">Eye To Eye</a>
-                        <a href="./portfolio2.html">Where Humanity Began</a>
+                        <a href="./wildlife_portfolio.html">Eye To Eye</a>
+                        <a href="./wildlife_portfolio.html#where-humanity-began">Where Humanity Began</a>
                     </div>
                 </li>
                 <li><a href="https://christinekhomykphotography.zenfoliosite.com/print-shop-1">Print Shop</a></li>
@@ -127,6 +263,15 @@
         </div>
     </nav>
 
+<!-- MINI NAV -->
+<div class="mini-nav" id="mini-nav">
+    <a href="#eye-to-eye" data-section="eye-to-eye">Eye To Eye</a>
+    <a href="#where-humanity-began" data-section="where-humanity-began">Where Humanity Began</a>
+</div>
+
+<!-- GALLERY 1: Eye To Eye -->
+
+
     <!-- Hero -->
     <section class="portfolio-hero">
         <h1>Eye to Eye</h1>
@@ -136,6 +281,7 @@
 
     <!-- Gallery Grid -->
     <section class="gallery-container">
+        <section id="eye-to-eye"></section>
         <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox('portfolio1', 0)">
                 <img src="/TigerSmile.jpg" alt="Snowflake">
@@ -318,263 +464,131 @@
     </div>
 
     <!-- Footer -->
-    <footer>
-        <p>© 2026 Christine Khomyk Wildlife Photography. All rights reserved.</p>
-    </footer>
+    
 
-</body>
-</html>            </div>
-        </div>
-        <div class="has-dropdown-mobile-dark">
-            <input type="checkbox" id="dropdown-portfolio-mobile">
-            <label for="dropdown-portfolio-mobile">Portfolio</label>
-            <div class="dropdown-mobile">
-                <a href="./portfolio.html">Eye To Eye</a><br>
-                <a href="./portfolio2.html">Where Humanity Began</a>
-            </div>
-        </div>
-        <a href="https://christinekhomykphotography.zenfoliosite.com/print-shop-1">Print Shop</a>
-        <div class="has-dropdown-mobile-dark">
-            <input type="checkbox" id="dropdown-expeditions-mobile">
-            <label for="dropdown-expeditions-mobile">Expeditions</label>
-            <div class="dropdown-mobile">
-                <a href="./expeditions.html">Uganda 2026</a>
-            </div>
-        </div>
-        <div class="has-dropdown-mobile-dark">
-            <input type="checkbox" id="dropdown-contact-mobile">
-            <label for="dropdown-contact-mobile">Work With Me</label>
-            <div class="dropdown-mobile">
-                <a href="./contact.html#brand-partnerships">Brand Partnerships</a><br>
-                <a href="./contact.html#future-workshops">Future Workshops</a><br>
-                <a href="./contact.html#prints-licensing">Prints & Licensing</a><br>
-                <a href="./contact.html#mentoring">Photography Mentoring</a>
-            </div>
-        </div>
-        <a href="https://instagram.com/christinekhomyk.wild" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="22px" height="22px" viewBox="0 0 256 256" xml:space="preserve">
-                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-                    <path d="M 31.336 8.741 c -0.078 -1.71 -0.35 -2.878 -0.747 -3.9 c -0.403 -1.072 -1.036 -2.043 -1.853 -2.846 c -0.802 -0.817 -1.774 -1.45 -2.846 -1.854 c -1.022 -0.397 -2.19 -0.668 -3.9 -0.746 c -1.713 -0.078 -2.261 -0.097 -6.624 -0.097 s -4.911 0.019 -6.624 0.097 c -1.71 0.078 -2.878 0.35 -3.9 0.747 C 3.769 0.546 2.798 1.178 1.996 1.996 c -0.817 0.802 -1.45 1.773 -1.854 2.846 c -0.397 1.022 -0.668 2.19 -0.746 3.9 c -0.079 1.714 -0.097 2.261 -0.097 6.625 c 0 4.364 0.019 4.911 0.097 6.625 c 0.078 1.71 0.35 2.878 0.747 3.9 c 0.403 1.072 1.036 2.043 1.853 2.846 c 0.802 0.817 1.774 1.45 2.846 1.853 c 1.022 0.397 2.19 0.669 3.9 0.747 c 1.713 0.078 2.261 0.097 6.624 0.097 s 4.911 -0.018 6.624 -0.097 c 1.71 -0.078 2.878 -0.35 3.9 -0.747 c 2.158 -0.834 3.864 -2.541 4.699 -4.699 c 0.397 -1.022 0.669 -2.19 0.747 -3.9 c 0.078 -1.714 0.097 -2.261 0.097 -6.625 S 31.414 10.455 31.336 8.741 z M 28.444 21.858 c -0.071 1.567 -0.333 2.417 -0.553 2.983 c -0.541 1.401 -1.648 2.509 -3.049 3.049 c -0.566 0.22 -1.417 0.482 -2.983 0.553 c -1.694 0.077 -2.202 0.094 -6.492 0.094 c -4.291 0 -4.799 -0.016 -6.492 -0.094 c -1.566 -0.071 -2.417 -0.333 -2.983 -0.553 c -0.698 -0.258 -1.329 -0.668 -1.847 -1.202 c -0.534 -0.518 -0.944 -1.149 -1.202 -1.847 c -0.22 -0.566 -0.482 -1.417 -0.553 -2.983 c -0.077 -1.694 -0.094 -2.202 -0.094 -6.492 s 0.016 -4.798 0.094 -6.492 C 2.359 7.306 2.62 6.456 2.84 5.89 C 3.098 5.192 3.509 4.56 4.042 4.042 C 4.561 3.508 5.192 3.098 5.89 2.84 c 0.566 -0.22 1.417 -0.482 2.983 -0.553 c 1.694 -0.077 2.202 -0.093 6.492 -0.093 h 0 c 4.29 0 4.798 0.016 6.492 0.094 c 1.567 0.071 2.417 0.333 2.983 0.553 c 0.698 0.258 1.329 0.668 1.847 1.202 c 0.534 0.518 0.944 1.15 1.202 1.848 c 0.22 0.566 0.482 1.417 0.553 2.983 c 0.077 1.694 0.094 2.202 0.094 6.492 S 28.521 20.164 28.444 21.858 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #D4A76A; fill-rule: nonzero; opacity: 1;" transform=" matrix(2.8008 0 0 2.8008 1.9639999999999986 1.9639999999999702) " stroke-linecap="round"/>
-                    <path d="M 15.365 7.115 c -4.557 0 -8.25 3.694 -8.25 8.25 s 3.694 8.251 8.25 8.251 c 4.557 0 8.251 -3.694 8.251 -8.251 S 19.922 7.115 15.365 7.115 z M 15.365 20.721 c -2.957 0 -5.355 -2.398 -5.355 -5.356 s 2.398 -5.356 5.356 -5.356 c 2.958 0 5.356 2.398 5.356 5.356 S 18.323 20.721 15.365 20.721 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #D4A76A; fill-rule: nonzero; opacity: 1;" transform=" matrix(2.8008 0 0 2.8008 1.9639999999999986 1.9639999999999702) " stroke-linecap="round"/>
-                    <path d="M 25.87 6.789 c 0 1.065 -0.863 1.928 -1.928 1.928 c -1.065 0 -1.928 -0.863 -1.928 -1.928 c 0 -1.065 0.863 -1.928 1.928 -1.928 S 25.87 5.724 25.87 6.789 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #D4A76A; fill-rule: nonzero; opacity: 1;" transform=" matrix(2.8008 0 0 2.8008 1.9639999999999986 1.9639999999999702) " stroke-linecap="round"/>
-                </g>
-            </svg>
-        </a>
-    </aside>
+<!-- DIVIDER -->
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo-darkmode">Christine Khomyk</div>
-            <ul class="nav-links-dark">
-                <li><a href="./index.html">Home</a></li>
-                <li class="nav-item">
-                    <a href="./aboutPhotographer.html" class="dropdown-toggle">About Me</a>
-                    <div class="dropdown-backdrop-dark"></div>
-                    <div class="dropdown-menu-dark">
-                        <a href="./aboutPhotographer.html">The Photographer</a>
-                        <a href="./aboutEquipment.html">The Equipment</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="./portfolio.html" class="dropdown-toggle">Portfolio</a>
-                    <div class="dropdown-backdrop-dark"></div>
-                    <div class="dropdown-menu-dark">
-                        <a href="./portfolio.html">Eye To Eye</a>
-                        <a href="./portfolio2.html">Where Humanity Began</a>
-                    </div>
-                </li>
-                <li><a href="https://christinekhomykphotography.zenfoliosite.com/print-shop-1">Print Shop</a></li>
-                <li class="nav-item">
-                    <a href="./expeditions.html" class="dropdown-toggle">Expeditions</a>
-                    <div class="dropdown-backdrop-dark"></div>
-                    <div class="dropdown-menu-dark">
-                        <a href="./expeditions.html">Uganda 2026</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="./contact.html" class="dropdown-toggle">Work With Me</a>
-                    <div class="dropdown-backdrop-dark"></div>
-                    <div class="dropdown-menu-dark">
-                        <a href="./contact.html#brand-partnerships">Brand Partnerships</a>
-                        <a href="./contact.html#future-workshops">Future Workshops</a>
-                        <a href="./contact.html#prints-licensing">Prints & Licensing</a>
-                        <a href="./contact.html#mentoring">Photography Mentoring</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="nav-social-icon-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="22px" height="22px" viewBox="0 0 256 256" xml:space="preserve">
-                            <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-                                <path d="M 31.336 8.741 c -0.078 -1.71 -0.35 -2.878 -0.747 -3.9 c -0.403 -1.072 -1.036 -2.043 -1.853 -2.846 c -0.802 -0.817 -1.774 -1.45 -2.846 -1.854 c -1.022 -0.397 -2.19 -0.668 -3.9 -0.746 c -1.713 -0.078 -2.261 -0.097 -6.624 -0.097 s -4.911 0.019 -6.624 0.097 c -1.71 0.078 -2.878 0.35 -3.9 0.747 C 3.769 0.546 2.798 1.178 1.996 1.996 c -0.817 0.802 -1.45 1.773 -1.854 2.846 c -0.397 1.022 -0.668 2.19 -0.746 3.9 c -0.079 1.714 -0.097 2.261 -0.097 6.625 c 0 4.364 0.019 4.911 0.097 6.625 c 0.078 1.71 0.35 2.878 0.747 3.9 c 0.403 1.072 1.036 2.043 1.853 2.846 c 0.802 0.817 1.774 1.45 2.846 1.853 c 1.022 0.397 2.19 0.669 3.9 0.747 c 1.713 0.078 2.261 0.097 6.624 0.097 s 4.911 -0.018 6.624 -0.097 c 1.71 -0.078 2.878 -0.35 3.9 -0.747 c 2.158 -0.834 3.864 -2.541 4.699 -4.699 c 0.397 -1.022 0.669 -2.19 0.747 -3.9 c 0.078 -1.714 0.097 -2.261 0.097 -6.625 S 31.414 10.455 31.336 8.741 z M 28.444 21.858 c -0.071 1.567 -0.333 2.417 -0.553 2.983 c -0.541 1.401 -1.648 2.509 -3.049 3.049 c -0.566 0.22 -1.417 0.482 -2.983 0.553 c -1.694 0.077 -2.202 0.094 -6.492 0.094 c -4.291 0 -4.799 -0.016 -6.492 -0.094 c -1.566 -0.071 -2.417 -0.333 -2.983 -0.553 c -0.698 -0.258 -1.329 -0.668 -1.847 -1.202 c -0.534 -0.518 -0.944 -1.149 -1.202 -1.847 c -0.22 -0.566 -0.482 -1.417 -0.553 -2.983 c -0.077 -1.694 -0.094 -2.202 -0.094 -6.492 s 0.016 -4.798 0.094 -6.492 C 2.359 7.306 2.62 6.456 2.84 5.89 C 3.098 5.192 3.509 4.56 4.042 4.042 C 4.561 3.508 5.192 3.098 5.89 2.84 c 0.566 -0.22 1.417 -0.482 2.983 -0.553 c 1.694 -0.077 2.202 -0.093 6.492 -0.093 h 0 c 4.29 0 4.798 0.016 6.492 0.094 c 1.567 0.071 2.417 0.333 2.983 0.553 c 0.698 0.258 1.329 0.668 1.847 1.202 c 0.534 0.518 0.944 1.15 1.202 1.848 c 0.22 0.566 0.482 1.417 0.553 2.983 c 0.077 1.694 0.094 2.202 0.094 6.492 S 28.521 20.164 28.444 21.858 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #D4A76A; fill-rule: nonzero; opacity: 1;" transform=" matrix(2.8008 0 0 2.8008 1.9639999999999986 1.9639999999999702) " stroke-linecap="round"/>
-                                <path d="M 15.365 7.115 c -4.557 0 -8.25 3.694 -8.25 8.25 s 3.694 8.251 8.25 8.251 c 4.557 0 8.251 -3.694 8.251 -8.251 S 19.922 7.115 15.365 7.115 z M 15.365 20.721 c -2.957 0 -5.355 -2.398 -5.355 -5.356 s 2.398 -5.356 5.356 -5.356 c 2.958 0 5.356 2.398 5.356 5.356 S 18.323 20.721 15.365 20.721 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #D4A76A; fill-rule: nonzero; opacity: 1;" transform=" matrix(2.8008 0 0 2.8008 1.9639999999999986 1.9639999999999702) " stroke-linecap="round"/>
-                                <path d="M 25.87 6.789 c 0 1.065 -0.863 1.928 -1.928 1.928 c -1.065 0 -1.928 -0.863 -1.928 -1.928 c 0 -1.065 0.863 -1.928 1.928 -1.928 S 25.87 5.724 25.87 6.789 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: #D4A76A; fill-rule: nonzero; opacity: 1;" transform=" matrix(2.8008 0 0 2.8008 1.9639999999999986 1.9639999999999702) " stroke-linecap="round"/>
-                            </g>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+        <div style="display:flex;align-items:center;gap:2rem;padding:3rem 5%;background:var(--cream);">
+            <div style="flex:1;height:1px;background:var(--golden);opacity:0.4;"></div>
+            <span style="font-family:var(--font-body);font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--sand);">Where Humanity Began</span>
+            <div style="flex:1;height:1px;background:var(--golden);opacity:0.4;"></div>
         </div>
-    </nav>
+
+
+<!-- GALLERY 2: Where Humanity Began -->
+
 
     <!-- Hero -->
     <section class="portfolio-hero">
-        <h1>Eye to Eye</h1>
+<section id="where-humanity-began"></section>
+        <h1>Where Humanity Began</h1>
         <div class="divider"></div>
-        <p>Wildlife Collection • Click to view full size</p>
+        <p>Christine Khomyk Wildlife Photography • Tanzania</p>
     </section>
 
     <!-- Gallery Grid -->
     <section class="gallery-container">
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 0)">
-                <img src="/TigerSmile.jpg" alt="Snowflake">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 0)">
+                <img src="/CheetahBothered.jpg" alt="Do Not Disturb">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 1)">
+                <img src="/GiraffeLooking.jpg" alt="Overhead">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 1)">
-                <img src="/BobEating.jpg" alt="The Toss">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 2)">
+                <img src="/CheetahWalking.jpg" alt="Coming For You">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 2)">
-                <img src="/CloudedLeopardBetweenTrees.jpg" alt="Ghost in the Undergrowth">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 3)">
+                <img src="/GiraffeLookingInCamera.jpg" alt="The Tallest Perspective">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 4)">
+                <img src="/RhinoCouple.jpg" alt="Survivors">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 3)">
-                <img src="/CloudedLeopardLookingAtCamera.jpg" alt="Between Two Worlds">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 5)">
+                <img src="/LeopardOnTreePortrait.jpg" alt="The Arborist">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 4)">
-                <img src="/FossaCloseUp.jpg" alt="The Predator You've Never Feared">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 6)">
+                <img src="/LionCubHoldingTree.jpg" alt="First Attempt">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 5)">
-                <img src="/FossaPortrait.jpg" alt="Descent">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 7)">
+                <img src="/LionCubHunting.jpg" alt="Eyes in the Grass">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 6)">
-                <img src="/GibbonCloseUp2.jpg" alt="Old Soul">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 8)">
+                <img src="/LionCubPortrait.jpg" alt="Small King">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 7)">
-                <img src="/KiriSidePortrait.jpg" alt="Architecture of a Bill">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 9)">
+                <img src="/LionCubsEating.jpg" alt="The Education">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 10)">
+                <img src="/LionessesWalking.jpg" alt="The Road Belongs to Them">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 11)">
+                <img src="/CheetahCubsSitting.jpg" alt="The Mantle">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 12)">
+                <img src="/ThreeGiraffes.jpg" alt="The Tower">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 8)">
-                <img src="/LionessOnTrunkClimbing.jpg" alt="Queen's Throne">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 13)">
+                <img src="/LionCubSitting.jpg" alt="Not Yet">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
             
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 9)">
-                <img src="/LyingHyena.jpg" alt="Before the World Wakes">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-            
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 10)">
-                <img src="/MacaqueLookingInCamera.jpg" alt="Caught Mid-Thought">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-            
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 11)">
-                <img src="/MeerkatCloseUp.jpg" alt="The Lookout">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-            
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 12)">
-                <img src="/MelanisticLeopardWalking.jpg" alt="Shadow Walking">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 14)">
+                <img src="/LionessesOnTreeFull.jpg" alt="The High Ground">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
 
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 13)">
-                <img src="/OrangeLemurPortrait.jpg" alt="Wide Awake">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 15)">
+                <img src="/LionOnTreeLying.jpg" alt="Above It All">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
 
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 14)">
-                <img src="/PandaSitting.jpg" alt="Autumn Portrait">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 16)">
+                <img src="/MaleGazeleLookingInCamera.jpg" alt="Still Life with Horns">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
 
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 15)">
-                <img src="/TigerInWaterRoar.jpg" alt="Declaration">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 17)">
+                <img src="/MaleLionLookingWhileSleeping.jpg" alt="Between Worlds">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
 
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 16)">
-                <img src="/PandaTongue.jpg" alt="Unimpressed">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 18)">
+                <img src="/MonkeyWithOpenMouth.jpg" alt="Caught Mid-Sentence">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
 
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 17)">
-                <img src="/PangolinTurning.jpg" alt="Living Armour">
+            <div class="gallery-item" onclick="openLightbox('portfolio2', 19)">
+                <img src="/LionCubsFighting.jpg" alt="Rough and Tumble">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 18)">
-                <img src="/TigerBehindTree.jpg" alt="Hiding in Colour">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 19)">
-                <img src="/RedPandaCrop.jpg" alt="Winter Forager">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 20)">
-                <img src="/PenguinShout.jpg" alt="Permission to Speak">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-            
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 21)">
-                <img src="/PolarBearRoaring.jpg" alt="Lord of the Ice">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 22)">
-                <img src="/RingtailLemurSitting.jpg" alt="The Watcher">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 23)">
-                <img src="/RedPandaWalking.jpg" alt="The Approach">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 24)">
-                <img src="/ServalWithRabbit.jpg" alt="The Hunt, Complete">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 25)">
-                <img src="/SilverLangurPortrait.jpg" alt="Hidden in Plain Sight">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 26)">
-                <img src="/SnowLeopardStanding.jpg" alt="The Ghost Reveals Itself">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-           <div class="gallery-item" onclick="openLightbox('portfolio1', 27)">
-                <img src="/TigerGoingInWater.jpg" alt="The Crossing">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 28)">
-                <img src="/SquirrelMonkeyWithBaby.jpg" alt="First Flight">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('portfolio1', 29)">
-                <img src="/SunbearRoaring.jpg" alt="Do Not Disturb">
-                <div class="hover-overlay"><span>View</span></div>
-            </div>
+        
             
         </div>
     </section>
@@ -587,7 +601,9 @@
         
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <div class="lightbox-image">
-                <img id="lightbox-img" src="" alt="">
+                <a id="lightbox-link" href="#" target="_blank" rel="noopener noreferrer">
+                    <img id="lightbox-img" src="" alt="">
+                </a>
             </div>
             <div class="lightbox-info">
                 <h2 id="lightbox-title">Image Title</h2>
@@ -607,9 +623,68 @@
     </div>
 
     <!-- Footer -->
-    <footer>
+    
+
+<footer>
         <p>© 2026 Christine Khomyk Wildlife Photography. All rights reserved.</p>
     </footer>
 
+<script>
+var dismissed = false;
+
+function selectCollection(id, panel) {
+    if(dismissed) return;
+    dismissed = true;
+    panel.classList.add("expanding");
+    setTimeout(function() {
+        var target = document.getElementById(id);
+        if(target) target.scrollIntoView({behavior:"instant"});
+        var t = document.getElementById("triptych");
+        t.classList.add("dismissed");
+        document.getElementById("tp-hint").classList.add("hidden");
+        document.body.classList.remove("triptych-active");
+        setTimeout(function() {
+            t.style.display = "none";
+            document.getElementById("mini-nav").classList.add("show");
+            updateActive(id);
+        }, 700);
+    }, 300);
+}
+
+function updateActive(activeId) {
+    document.querySelectorAll(".mini-nav a").forEach(function(a) {
+        a.classList.toggle("active", a.dataset.section === activeId);
+    });
+}
+
+window.addEventListener("scroll", function() {
+    if(!dismissed) return;
+    var scrollY = window.scrollY + 100;
+    var current = "";
+    ["eye-to-eye","where-humanity-began"].forEach(function(id) {
+        var el = document.getElementById(id);
+        if(el && scrollY >= el.offsetTop) current = id;
+    });
+    if(current) updateActive(current);
+});
+
+window.addEventListener("DOMContentLoaded", function() {
+    if(window.location.hash) {
+        var id = window.location.hash.slice(1);
+        dismissed = true;
+        document.getElementById("triptych").style.display = "none";
+        document.getElementById("tp-hint").style.display = "none";
+        document.body.classList.remove("triptych-active");
+        document.getElementById("mini-nav").classList.add("show");
+        setTimeout(function() {
+            var target = document.getElementById(id);
+            if(target) target.scrollIntoView({behavior:"instant"});
+            updateActive(id);
+        }, 50);
+    }
+});
+</script>
+
+<script type="module" src="./src/index.ts"></script>
 </body>
 </html>
