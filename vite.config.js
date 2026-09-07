@@ -11,8 +11,7 @@ export default defineConfig({
         main: 'index.html',
         // Wildlife
         wildlifeHome: 'wildlife_index.html',
-        wildlifeAboutEquipment: 'wildlife_aboutEquipment.html',
-        wildlifeAboutPhotographer: 'wildlife_aboutPhotographer.html',
+        wildlifeAbout: 'wildlife_about.html',
         wildlifePortfolio: 'wildlife_portfolio.html',
         wildlifePortfolio2: 'wildlife_portfolio2.html',
         wildlifeContact: 'wildlife_contact.html',
