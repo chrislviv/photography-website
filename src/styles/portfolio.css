@@ -1,21 +1,11 @@
 body {
             font-family: var(--font-body);
-            background-color: var(--charcoal);
-            color: var(--cream);
+            background-color: var(--cream);
+            color: var(--charcoal);
             max-width: 100%;
         }
         
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(36, 31, 28, 0.95);
-            backdrop-filter: saturate(180%) blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(200, 181, 160, 0.1);
-        }
+        /* Navigation handled by styles.css */
 
         /* Hero */
         .portfolio-hero {
@@ -28,7 +18,7 @@ body {
             font-family: var(--font-display);
             font-size: 3.5rem;
             font-weight: 300;
-            color: var(--cream);
+            color: var(--charcoal);
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
         }
@@ -61,7 +51,7 @@ body {
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            background-color: rgba(200, 181, 160, 0.05);
+            background-color: rgba(58, 75, 58, 0.03);
             display: inline-block;
             transition: transform 0.3s ease;
             -webkit-column-break-inside: avoid; /* Add this for Safari */
@@ -294,16 +284,16 @@ body {
         
         /* Footer */
         footer {
-            background-color: rgba(36, 31, 28, 1);
+            background-color: var(--cream);
             padding: 3rem 5%;
             text-align: center;
-            border-top: 1px solid rgba(200, 181, 160, 0.1);
+            border-top: 1px solid rgba(58, 75, 58, 0.1);
         }
         
         footer p {
             font-family: var(--font-body);
             font-size: 0.85rem;
-            color: var(--sand);
+            color: var(--charcoal);
             letter-spacing: 1px;
         }
         
