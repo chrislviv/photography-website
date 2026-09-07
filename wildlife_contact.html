@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work With Me - Christine Khomyk</title>
+    <title>Work With Me — Christine Khomyk Wild</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/styles.css">
-    <link rel="stylesheet" href="./src/styles/contact.css">
+    <link rel="stylesheet" href="./src/styles/wildlife-contact.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
-    <!-- Development -->
-    <!-- <script type="module" src="./dist/index.js"></script> -->
-    <!-- Staging -->
-    <script type="module" src="./src/index.ts"></script>
-    <!-- Navigation -->
 
-    
-        <input type="checkbox" id="nav-toggle">
+<input type="checkbox" id="nav-toggle">
 <label class="hamburger" for="nav-toggle" aria-label="Toggle menu">
   <span></span>
   <span></span>
@@ -63,6 +57,7 @@
                 <a href="./wildlife_contact.html#mentoring">Photography Mentoring</a>
             </div>
     </div>
+    <a href="./cars_index.html">&#x2197; Automotive</a>
     <a href="https://instagram.com/christinekhomyk.wild" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="22px" height="22px" viewBox="0 0 256 256" xml:space="preserve">
             <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -75,8 +70,8 @@
     </aside>
 
 
-
-       <nav>
+    <!-- Navigation -->
+    <nav>
         <div class="nav-container">
             <div class="logo">Christine Khomyk</div>
             <ul class="nav-links">
@@ -106,7 +101,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="./wildlife_contact.html" class="dropdown-toggle">Work With Me</a>
+                    <a href="./wildlife_contact.html" class="dropdown-toggle active">Work With Me</a>
                     <div class="dropdown-backdrop"></div>
                     <div class="dropdown-menu">
                         <a href="./wildlife_contact.html#brand-partnerships">Brand Partnerships</a>
@@ -115,6 +110,7 @@
                         <a href="./wildlife_contact.html#mentoring">Photography Mentoring</a>
                     </div>
                 </li>
+                <li><a href="./cars_index.html" class="nav-switch-wildlife">Automotive</a></li>
                 <li>
                     <a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="nav-social-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="22px" height="22px" viewBox="0 0 256 256" xml:space="preserve">
@@ -130,123 +126,117 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="page-hero">
-        <h1>Work With Me</h1>
-        <div class="divider"></div>
-        <p>Let's create something exceptional together. From brand collaborations to photography mentoring, I offer several ways to work together.</p>
-    </section>
+<!-- HERO -->
+<section class="wc-hero">
+    <p class="wc-label">Work With Me</p>
+    <h1>Let's Create<br>Something<br>Remarkable</h1>
+    <p class="wc-sub">Available for brand partnerships, expeditions, fine art prints and mentoring.</p>
+</section>
 
-    <!-- Brand Partnerships -->
-    <section class="service-section" id="brand-partnerships">
-        <div class="service-content">
-            <div class="service-text">
-                <div class="service-category">Commercial Collaboration</div>
-                <h2>Brand Partnerships</h2>
-                <p>I partner with brands that align with my values of conservation, sustainability, and authentic storytelling. My visual style brings a distinctive, editorial quality to commercial projects.</p>
-                
-                <ul class="service-features">
-                    <li>Sponsored content & social media campaigns</li>
-                    <li>Product photography & brand imagery</li>
-                    <li>Ambassador programs for outdoor/conservation brands</li>
-                    <li>Editorial features & commissioned work</li>
-                    <li>Gear testing & review collaborations</li>
-                </ul>
-                
-                <p>My audience values authenticity, technical excellence, and conservation-minded content. I work only with brands I genuinely believe in and would recommend to my community.</p>
-                
-                <a href="mailto:christine.khomyk@gmail.com" class="btn-primary">Discuss a Partnership</a>
-            </div>
-            <div class="service-image">
-                <img src="/2.jpg" alt="Brand Partnership">
+<!-- CARDS -->
+<div class="wc-cards-section">
+    <div class="wc-cards-grid">
+
+        <div class="wc-card" id="brand-partnerships">
+            <div class="wc-num">01</div>
+            <h3 class="wc-title">Brand Partnerships</h3>
+            <p class="wc-desc">Campaigns, ambassador programs and editorial collaborations with brands that share a commitment to the natural world.</p>
+            <div class="wc-tags">
+                <span class="wc-tag">Campaigns</span>
+                <span class="wc-tag">Ambassador</span>
+                <span class="wc-tag">Editorial</span>
             </div>
         </div>
-    </section>
 
-    <!-- Future Workshops -->
-    <section class="service-section" id="future-workshops">
-        <div class="service-content">
-            <div class="service-image">
-                <img src="/fox.jpg" alt="Tanzania Workshop">
+        <div class="wc-card" id="future-workshops">
+            <div class="wc-num">02</div>
+            <h3 class="wc-title">Photography Expeditions</h3>
+            <p class="wc-desc">Small-group wildlife photography expeditions planned for 2027. Uganda and India — intimate groups, expert guides, hands-on field instruction.</p>
+            <div class="wc-tags">
+                <span class="wc-tag">Uganda 2027</span>
+                <span class="wc-tag">India 2027</span>
+                <span class="wc-tag">Small Groups</span>
             </div>
-            <div class="service-text">
-                <div class="service-category">Coming 2027</div>
-                <h2>Tanzania Photography Expeditions</h2>
-                <p>I'm building toward leading small-group photography safaris in Tanzania, combining my intimate knowledge of the region with hands-on instruction in wildlife photography techniques.</p>
-                
-                <ul class="service-features">
-                    <li>Small groups (max 6-8 participants)</li>
-                    <li>Expert guides & premium safari lodges</li>
-                    <li>Hands-on instruction in the field</li>
-                    <li>Post-processing workshops</li>
-                    <li>Focus on Ndutu, Ngorongoro, Tarangire</li>
-                </ul>
-                
-                <div class="testimonial">
-                    <p>"Join the waitlist to be the first to know when bookings open. Limited spaces available."</p>
-                </div>
-                
-                <a href="https://forms.gle/CP5xNtjtYwtcwqZUA" class="btn-primary">Join Waitlist</a>
+            <a href="./wildlife_expeditions.html" class="wc-card-link">View Expeditions</a>
+        </div>
+
+        <div class="wc-card" id="prints-licensing">
+            <div class="wc-num">03</div>
+            <h3 class="wc-title">Prints &amp; Licensing</h3>
+            <p class="wc-desc">Limited edition fine art prints and commercial licensing for editorial, publishing and commercial use.</p>
+            <div class="wc-tags">
+                <span class="wc-tag">Fine Art</span>
+                <span class="wc-tag">Limited Edition</span>
+                <span class="wc-tag">Licensing</span>
+            </div>
+            <a href="https://christinekhomykphotography.zenfoliosite.com/print-shop-1" target="_blank" class="wc-card-link">Visit Print Shop</a>
+        </div>
+
+        <div class="wc-card" id="mentoring">
+            <div class="wc-num">04</div>
+            <h3 class="wc-title">Photography Mentoring</h3>
+            <p class="wc-desc">One-on-one sessions for photographers looking to master manual mode, composition and light, or prepare for a safari trip.</p>
+            <div class="wc-tags">
+                <span class="wc-tag">1-on-1</span>
+                <span class="wc-tag">Portfolio Review</span>
+                <span class="wc-tag">Safari Prep</span>
             </div>
         </div>
-    </section>
 
-    <!-- Prints & Licensing -->
-    <section class="service-section" id="prints-licensing">
-        <div class="service-content">
-            <div class="service-text">
-                <div class="service-category">Fine Art & Commercial Use</div>
-                <h2>Prints & Licensing</h2>
-                <p>My wildlife images are available as limited edition fine art prints and for commercial licensing. Each print is museum-quality and ships with a certificate of authenticity.</p>
-                
-                <ul class="service-features">
-                    <li>Limited edition fine art prints</li>
-                    <li>Multiple sizes & framing options</li>
-                    <li>Commercial licensing available</li>
-                    <li>Editorial & publishing rights</li>
-                    <li>Custom print requests considered</li>
-                </ul>
-                
-                <p>All prints support ongoing conservation documentation work and are produced using archival-quality materials designed to last generations.</p>
-                
-                <a href="mailto:christine.khomyk@gmail.com" class="btn-primary">Licensing Inquiry</a>
-            </div>
-            <div class="service-image">
-                <img src="/GibbonCloseUp2.jpg" alt="Fine Art Print">
-            </div>
-        </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Photography Mentoring -->
-    <section class="service-section" id="mentoring">
-        <div class="service-content">
-            <div class="service-image">
-                <img src="/SunbearRoaring.jpg" alt="Photography Mentoring">
+<!-- CONTACT SECTION -->
+<div class="wc-contact-section">
+    <div class="wc-contact-left">
+        <h2>Let's Talk</h2>
+        <p>Tell me what you have in mind. I'll get back to you within 48 hours.</p>
+    </div>
+    <div class="wc-contact-right">
+        <a href="https://instagram.com/christinekhomyk.wild" target="_blank" class="wc-social-row">
+            <div class="wc-social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="#D4A76A" stroke-width="1.5"/>
+                    <circle cx="12" cy="12" r="5" stroke="#D4A76A" stroke-width="1.5"/>
+                    <circle cx="17.5" cy="6.5" r="1.2" fill="#D4A76A"/>
+                </svg>
             </div>
-            <div class="service-text">
-                <div class="service-category">One-on-One Instruction</div>
-                <h2>Photography Mentoring</h2>
-                <p>I offer personalized mentoring for photographers looking to elevate their wildlife photography or prepare for safari trips. Drawing on my transition from automatic to manual mastery, I provide practical, actionable guidance.</p>
-                
-                <ul class="service-features">
-                    <li>1-on-1 video consultation sessions</li>
-                    <li>Portfolio review & feedback</li>
-                    <li>Tanzania safari preparation & planning</li>
-                    <li>Technical skills: manual mode, composition, light</li>
-                    <li>Post-processing workflow guidance</li>
-                    <li>Gear recommendations & optimization</li>
-                </ul>
-                
-                <p>Whether you're planning your first safari or wanting to refine your technique, I can help you capture images that truly showcase wildlife's soul.</p>
-                
-                <a href="https://forms.gle/i7Hi8sWd3RE3Dbmx6" class="btn-primary">Book a Session</a>
+            <div class="wc-social-text">
+                <div class="wc-social-name">Instagram</div>
+                <div class="wc-social-val">@christinekhomyk.wild</div>
             </div>
-        </div>
-    </section>
+        </a>
+        <a href="mailto:christine.khomyk@gmail.com" class="wc-social-row">
+            <div class="wc-social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="6" width="20" height="14" rx="2" stroke="#D4A76A" stroke-width="1.5"/>
+                    <path d="M2 8 L12 15 L22 8" stroke="#D4A76A" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div class="wc-social-text">
+                <div class="wc-social-name">Email</div>
+                <div class="wc-social-val">christine.khomyk@gmail.com</div>
+            </div>
+        </a>
+        <a href="https://christinekhomykphotography.zenfoliosite.com/print-shop-1" target="_blank" class="wc-social-row">
+            <div class="wc-social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="2" width="20" height="20" rx="2" stroke="#D4A76A" stroke-width="1.5"/>
+                    <path d="M8 12 L16 12 M12 8 L12 16" stroke="#D4A76A" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <div class="wc-social-text">
+                <div class="wc-social-name">Print Shop</div>
+                <div class="wc-social-val">Zenfolio</div>
+            </div>
+        </a>
+    </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Christine Khomyk Wildlife Photography. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>© 2026 Christine Khomyk Photography. All rights reserved.</p>
+</footer>
+
+<script type="module" src="./src/index.ts"></script>
 </body>
 </html>
