@@ -1,4 +1,4 @@
-  :root {
+:root {
             /* Option A7: Natural Earth */
             --cream: #FFFCF7;
             --sand: #C8B5A0;
@@ -105,6 +105,22 @@
         
         .nav-links > li > a:hover {
             color: var(--gold);
+        }
+
+
+        .nav-switch-wildlife {
+            border: 1px solid rgba(58, 75, 58, 0.4);
+            padding: 0.35rem 0.85rem;
+            color: var(--forest);
+            font-size: 0.52rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .nav-switch-wildlife:hover {
+            color: var(--golden);
+            border-color: var(--golden);
         }
 
         .nav-social-icon {
