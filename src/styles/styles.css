@@ -87,7 +87,7 @@
             align-items: center;
         }
         
-        .nav-links > li > a:not(.nav-social-icon) {
+        .nav-links > li > a:not(.nav-social-icon):not(.nav-switch-wildlife) {
             font-family: var(--font-body);
             font-size: 0.9rem;
             font-weight: 400;
@@ -110,13 +110,14 @@
 
         .nav-switch-wildlife {
             border: 1px solid rgba(58, 75, 58, 0.4);
-            padding: 0.35rem 0.85rem;
+            padding: 0.28rem 0.65rem;
             color: var(--forest);
-            font-size: 0.52rem;
-            letter-spacing: 0.28em;
+            font-size: 0.48rem;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             text-decoration: none;
             transition: all 0.2s;
+            white-space: nowrap;
         }
         .nav-switch-wildlife:hover {
             color: var(--golden);
@@ -460,7 +461,7 @@
     @media (max-width: 1024px) {
         .nav-container {
             /* flex-direction: column; */
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
            
         .nav-links {
