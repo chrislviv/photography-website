@@ -110,10 +110,12 @@
 
         .nav-switch-wildlife {
             border: 1px solid rgba(58, 75, 58, 0.4);
-            padding: 0.28rem 0.65rem;
+            padding: 0.28rem 0.7rem;
             color: var(--forest);
-            font-size: 0.48rem;
-            letter-spacing: 0.18em;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
             text-transform: uppercase;
             text-decoration: none;
             transition: all 0.2s;
