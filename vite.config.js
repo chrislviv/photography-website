@@ -13,7 +13,6 @@ export default defineConfig({
         wildlifeHome: 'wildlife_index.html',
         wildlifeAbout: 'wildlife_about.html',
         wildlifePortfolio: 'wildlife_portfolio.html',
-        wildlifePortfolio2: 'wildlife_portfolio2.html',
         wildlifeContact: 'wildlife_contact.html',
         wildlifeExpeditions: 'wildlife_expeditions.html',
         // Cars
