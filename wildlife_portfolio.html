@@ -40,8 +40,7 @@
         }
         .tp.expanding{flex:1!important;}
 
-        .tp-1{background:#3A4B3A;}
-        .tp-2{background:#3A4B3A;}
+        .tp-1,.tp-2,.tp-3{background:#3A4B3A;}
 
         .tp-ghost{
             position:absolute;font-family:"Cormorant Garamond",serif;font-weight:300;
@@ -119,11 +118,12 @@
         }
         .mini-nav.show{opacity:1;transform:translateY(0);pointer-events:auto;}
         .mini-nav a{
+            color:#7A5C0A !important;
             font-size:.6rem;font-weight:400;letter-spacing:.28em;text-transform:uppercase;
             color:var(--sand);text-decoration:none;transition:color .2s;
             font-family:var(--font-body);
         }
-        .mini-nav a:hover,.mini-nav a.active{color:#D4A76A;}
+        .mini-nav a:hover,.mini-nav a.active{color:#3A4B3A !important;}
     
         .portfolio-section-header{display:flex;align-items:flex-end;justify-content:space-between;padding:3rem 5% 2rem;border-bottom:1px solid rgba(58,75,58,.08);}
         .portfolio-section-label{font-size:.46rem;letter-spacing:.52em;text-transform:uppercase;color:#7A5C0A;margin-bottom:.6rem;}
@@ -330,7 +330,7 @@
         </div>
         <div class="portfolio-section-num">I</div>
     </div>
-    <div class="gallery-grid">
+    <div class="gallery-grid" style="padding:0 3%;">
             <div class="gallery-item"
                  data-src="/CloudedLeopardSmiling.jpg"
                  data-title="Smiling"
@@ -500,7 +500,7 @@
         </div>
         <div class="portfolio-section-num">II</div>
     </div>
-    <div class="gallery-grid">
+    <div class="gallery-grid" style="padding:0 3%;">
             <div class="gallery-item"
                  data-src="/CheetahBothered.jpg"
                  data-title="Do Not Disturb"
@@ -640,7 +640,7 @@
         </div>
         <div class="portfolio-section-num">III</div>
     </div>
-    <div class="gallery-grid">
+    <div class="gallery-grid" style="padding:0 3%;">
             <div class="gallery-item"
                  data-src="/Turtle2.jpg"
                  data-title="Turtle II"
