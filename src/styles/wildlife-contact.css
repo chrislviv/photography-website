@@ -6,15 +6,19 @@
 /* HERO */
 .wc-hero {
     margin-top: 48px;
-    padding: 5rem 5% 4rem;
-    border-bottom: 1px solid rgba(58,75,58,.1);
+    padding: 6rem 5% 5rem;
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-bottom: none;
 }
 .wc-label {
     font-size: .52rem;
     font-weight: 400;
     letter-spacing: .48em;
     text-transform: uppercase;
-    color: var(--golden);
+    color: #7A5C0A;
     margin-bottom: 1rem;
 }
 .wc-hero h1 {
@@ -29,7 +33,7 @@
 .wc-sub {
     font-size: .82rem;
     font-weight: 300;
-    color: var(--sand);
+    color: var(--forest);
     max-width: 480px;
     line-height: 1.9;
 }
@@ -70,7 +74,7 @@
     font-size: .44rem;
     letter-spacing: .5em;
     text-transform: uppercase;
-    color: var(--golden);
+    color: #7A5C0A;
     margin-bottom: 1.2rem;
 }
 .wc-title {
@@ -84,7 +88,7 @@
 .wc-desc {
     font-size: .72rem;
     font-weight: 300;
-    color: var(--sand);
+    color: var(--charcoal);
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
@@ -109,7 +113,7 @@
     font-size: .52rem;
     letter-spacing: .32em;
     text-transform: uppercase;
-    color: var(--golden);
+    color: #7A5C0A;
     text-decoration: none;
     margin-top: .5rem;
 }
@@ -140,7 +144,7 @@
 .wc-contact-left p {
     font-size: .78rem;
     font-weight: 300;
-    color: var(--sand);
+    color: var(--charcoal);
     line-height: 1.9;
 }
 .wc-contact-right {
