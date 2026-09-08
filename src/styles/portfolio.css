@@ -18,7 +18,7 @@ body {
             font-family: var(--font-display);
             font-size: 3.5rem;
             font-weight: 300;
-            color: var(--charcoal);
+            color: var(--forest);
             letter-spacing: 2px;
             margin-bottom: 0.5rem;
         }
@@ -284,16 +284,15 @@ body {
         
         /* Footer */
         footer {
-            background-color: var(--cream);
+            background-color: var(--charcoal);
             padding: 3rem 5%;
             text-align: center;
-            border-top: 1px solid rgba(58, 75, 58, 0.1);
         }
         
         footer p {
             font-family: var(--font-body);
             font-size: 0.85rem;
-            color: var(--charcoal);
+            color: var(--sand);
             letter-spacing: 1px;
         }
         
