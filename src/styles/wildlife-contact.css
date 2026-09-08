@@ -89,8 +89,8 @@
     font-size: .42rem;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: var(--sand);
-    border: 1px solid rgba(174,122,81,.2);
+    color: var(--golden);
+    border: 1px solid rgba(212,167,106,.4);
     padding: .28rem .65rem;
 }
 .wc-card-link {
@@ -129,7 +129,7 @@
     margin-bottom: .8rem;
 }
 .wc-contact-left p {
-    font-size: .78rem;
+    font-size: 1rem;
     font-weight: 300;
     color: var(--charcoal);
     line-height: 1.9;
@@ -160,14 +160,14 @@
 }
 .wc-social-row:hover .wc-social-icon { border-color: var(--golden); }
 .wc-social-name {
-    font-size: .52rem;
-    letter-spacing: .3em;
+    font-size: .75rem;
+    letter-spacing: .15em;
     text-transform: uppercase;
-    color: var(--charcoal);
-    margin-bottom: .2rem;
+    color: var(--forest);
+    margin-bottom: .25rem;
 }
 .wc-social-val {
-    font-size: .7rem;
+    font-size: .85rem;
     font-weight: 300;
     color: var(--charcoal);
 }
