@@ -86,12 +86,12 @@
     margin-bottom: 1.2rem;
 }
 .wc-tag {
-    font-size: .42rem;
-    letter-spacing: .22em;
+    font-size: 1rem;
+    letter-spacing: .05em;
     text-transform: uppercase;
-    color: var(--golden);
-    border: 1px solid rgba(212,167,106,.4);
-    padding: .28rem .65rem;
+    color: var(--gold);
+    border: 1px solid rgba(174,122,81,.3);
+    padding: .35rem .8rem;
 }
 .wc-card-link {
     display: inline-flex;
@@ -174,15 +174,15 @@
 
 /* FOOTER */
 footer {
-    background-color: var(--cream);
-    padding: 2rem 5%;
+    background-color: var(--charcoal);
+    padding: 3rem 5%;
     text-align: center;
-    border-top: 1px solid rgba(58,75,58,.08);
 }
 footer p {
-    font-size: .55rem;
-    letter-spacing: .18em;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
     color: var(--sand);
+    letter-spacing: 1px;
 }
 
 /* RESPONSIVE */
