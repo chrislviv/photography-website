@@ -13,14 +13,7 @@
     justify-content: flex-end;
     border-bottom: none;
 }
-.wc-label {
-    font-size: .52rem;
-    font-weight: 400;
-    letter-spacing: .48em;
-    text-transform: uppercase;
-    color: #7A5C0A;
-    margin-bottom: 1rem;
-}
+.wc-label { display: none; }
 .wc-hero h1 {
     font-family: var(--font-display);
     font-weight: 300;
@@ -30,13 +23,7 @@
     color: var(--forest);
     margin-bottom: 1rem;
 }
-.wc-sub {
-    font-size: .82rem;
-    font-weight: 300;
-    color: var(--forest);
-    max-width: 480px;
-    line-height: 1.9;
-}
+.wc-sub { display: none; }
 
 /* CARDS */
 .wc-cards-section {
@@ -52,7 +39,7 @@
 .wc-card {
     background: var(--cream);
     padding: 3rem 2.5rem 3.5rem;
-    border: 1px solid rgba(58,75,58,.08);
+    border: 1px solid rgba(174,122,81,.2);
     position: relative;
     overflow: hidden;
     transition: background .25s, border-color .25s;
@@ -67,28 +54,28 @@
     transform-origin: left;
     transition: transform .35s ease;
 }
-.wc-card:hover { background: #F5F0E8; border-color: rgba(174,122,81,.2); }
+.wc-card:hover { background: #F5F0E8; border-color: rgba(174,122,81,.4); }
 .wc-card:hover::after { transform: scaleX(1); }
 
 .wc-num {
     font-size: .44rem;
     letter-spacing: .5em;
     text-transform: uppercase;
-    color: #7A5C0A;
+    color: var(--golden);
     margin-bottom: 1.2rem;
 }
 .wc-title {
     font-family: var(--font-display);
     font-weight: 300;
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: var(--forest);
     margin-bottom: .8rem;
     line-height: 1.1;
 }
 .wc-desc {
-    font-size: .72rem;
+    font-size: 1rem;
     font-weight: 300;
-    color: var(--charcoal);
+    color: #000;
     line-height: 1.8;
     margin-bottom: 1.5rem;
 }
@@ -182,7 +169,7 @@
 .wc-social-val {
     font-size: .7rem;
     font-weight: 300;
-    color: var(--sand);
+    color: var(--charcoal);
 }
 
 /* FOOTER */
