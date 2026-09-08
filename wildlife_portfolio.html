@@ -57,7 +57,7 @@
         }
         .tp-index{
             font-size:.46rem;letter-spacing:.5em;text-transform:uppercase;
-            color:#D4A76A;margin-bottom:1.2rem;
+            color:rgba(255,252,247,.7);margin-bottom:1.2rem;
             opacity:0;transform:translateY(8px);
             transition:opacity .45s,transform .45s;transition-delay:.05s;
         }
@@ -94,13 +94,13 @@
             position:absolute;bottom:3.5rem;left:0;right:0;text-align:center;
             font-family:"Cormorant Garamond",serif;font-weight:300;
             font-size:clamp(1.2rem,2.5vw,2rem);letter-spacing:.08em;
-            color:rgba(255,252,247,.3);transition:opacity .35s;
+            color:rgba(255,252,247,.5);transition:opacity .35s;
         }
         .tp:hover .tp-idle{opacity:0;}
         .tp-hint{
             position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
             font-size:.42rem;letter-spacing:.42em;text-transform:uppercase;
-            color:rgba(255,252,247,.35);z-index:2001;pointer-events:none;
+            color:rgba(255,252,247,.5);z-index:2001;pointer-events:none;
             transition:opacity .4s;
         }
         .triptych-overlay:has(.tp:hover) ~ .tp-hint{opacity:0;}
@@ -126,12 +126,36 @@
         .mini-nav a:hover,.mini-nav a.active{color:#D4A76A;}
     
         .portfolio-section-header{display:flex;align-items:flex-end;justify-content:space-between;padding:3rem 5% 2rem;border-bottom:1px solid rgba(58,75,58,.08);}
-        .portfolio-section-label{font-size:.46rem;letter-spacing:.52em;text-transform:uppercase;color:var(--golden);margin-bottom:.6rem;}
+        .portfolio-section-label{font-size:.46rem;letter-spacing:.52em;text-transform:uppercase;color:#7A5C0A;margin-bottom:.6rem;}
         .portfolio-section-title{font-family:var(--font-display);font-weight:300;font-size:clamp(2rem,5vw,4rem);color:var(--forest);line-height:.9;}
         .portfolio-section-sub{font-family:var(--font-display);font-style:italic;font-weight:300;font-size:1rem;color:var(--sand);margin-top:.5rem;}
-        .portfolio-section-num{font-family:var(--font-display);font-weight:300;font-size:5rem;color:rgba(58,75,58,.07);line-height:1;}
+        .portfolio-section-num{font-family:var(--font-display);font-weight:300;font-size:5rem;color:rgba(122,92,10,.06);line-height:1;}
         .portfolio-divider{display:flex;align-items:center;gap:2rem;padding:2rem 5%;}
-</style>
+
+        /* ── LIGHTBOX ── */
+        .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(36,31,28,.96);z-index:3000;padding:2rem;overflow-y:auto;}
+        .lightbox-overlay.active{display:flex;align-items:center;justify-content:center;animation:lbFade .3s ease;}
+        @keyframes lbFade{from{opacity:0;}to{opacity:1;}}
+        .lightbox-inner{max-width:1400px;width:100%;display:flex;gap:3rem;align-items:center;}
+        .lightbox-img-wrap{flex:1.5;} .lightbox-img-wrap img{width:100%;height:auto;max-height:85vh;object-fit:contain;}
+        .lightbox-info{flex:1;color:var(--cream);}
+        .lightbox-info h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--cream);margin-bottom:1rem;}
+        .lb-meta{font-size:.75rem;color:var(--golden);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.5rem;}
+        .lb-desc{font-size:.9rem;line-height:1.9;color:var(--sand);margin-bottom:1.5rem;font-weight:300;}
+        .lb-tech{border-top:1px solid rgba(212,167,106,.15);padding-top:1.5rem;}
+        .lb-tech h3{font-family:var(--font-display);font-size:1.2rem;font-weight:300;color:var(--cream);margin-bottom:.8rem;}
+        .lb-tech ul{list-style:none;padding:0;}
+        .lb-tech li{font-size:.8rem;color:var(--sand);margin-bottom:.5rem;padding-left:1rem;position:relative;}
+        .lb-tech li::before{content:"—";position:absolute;left:0;color:var(--golden);}
+        .lightbox-close{position:fixed;top:1.5rem;right:1.5rem;width:44px;height:44px;border:1px solid rgba(212,167,106,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;color:var(--cream);transition:all .3s;z-index:3001;}
+        .lightbox-close:hover{background:var(--golden);border-color:var(--golden);}
+        .lightbox-prev,.lightbox-next{position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(212,167,106,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.5rem;color:var(--cream);transition:all .3s;z-index:3001;}
+        .lightbox-prev:hover,.lightbox-next:hover{background:var(--golden);border-color:var(--golden);}
+        .lightbox-prev{left:1.5rem;} .lightbox-next{right:1.5rem;}
+        /* Gallery items need cursor */
+        .gallery-item{cursor:pointer;}
+
+        </style>
 </head>
 <body class="triptych-active">
 
@@ -306,12 +330,208 @@
         </div>
         <div class="portfolio-section-num">I</div>
     </div>
-    <div class="gallery-grid"></div>
+    <div class="gallery-grid">
+            <div class="gallery-item"
+                 data-src="/CloudedLeopardSmiling.jpg"
+                 data-title="Smiling"
+                 data-meta="CLOUDED LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/CloudedLeopardSmiling.jpg" alt="Smiling">
+                <div class="gallery-overlay">
+                    <h3>Smiling</h3>
+                    <p>CLOUDED LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/KiriSidePortrait.jpg"
+                 data-title="Side Portrait"
+                 data-meta="KIRI • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/KiriSidePortrait.jpg" alt="Side Portrait">
+                <div class="gallery-overlay">
+                    <h3>Side Portrait</h3>
+                    <p>KIRI • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/PigTailMacaqueLooking.jpg"
+                 data-title="Looking"
+                 data-meta="PIG-TAIL MACAQUE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/PigTailMacaqueLooking.jpg" alt="Looking">
+                <div class="gallery-overlay">
+                    <h3>Looking</h3>
+                    <p>PIG-TAIL MACAQUE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/SilverLangurBaby.jpg"
+                 data-title="Baby"
+                 data-meta="SILVER LANGUR • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/SilverLangurBaby.jpg" alt="Baby">
+                <div class="gallery-overlay">
+                    <h3>Baby</h3>
+                    <p>SILVER LANGUR • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/CloudedLeopardPooping.jpg"
+                 data-title="Candid Moment"
+                 data-meta="CLOUDED LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/CloudedLeopardPooping.jpg" alt="Candid Moment">
+                <div class="gallery-overlay">
+                    <h3>Candid Moment</h3>
+                    <p>CLOUDED LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/TigerGoingInWater.jpg"
+                 data-title="The Crossing"
+                 data-meta="TIGER • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/TigerGoingInWater.jpg" alt="The Crossing">
+                <div class="gallery-overlay">
+                    <h3>The Crossing</h3>
+                    <p>TIGER • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/LeopardStaring.jpg"
+                 data-title="The Stare"
+                 data-meta="LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/LeopardStaring.jpg" alt="The Stare">
+                <div class="gallery-overlay">
+                    <h3>The Stare</h3>
+                    <p>LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/PigTailMacaqueBabyScratching.jpg"
+                 data-title="Baby Scratching"
+                 data-meta="PIG-TAIL MACAQUE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/PigTailMacaqueBabyScratching.jpg" alt="Baby Scratching">
+                <div class="gallery-overlay">
+                    <h3>Baby Scratching</h3>
+                    <p>PIG-TAIL MACAQUE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/ElephantsPlaying.jpg"
+                 data-title="At Play"
+                 data-meta="ELEPHANTS • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/ElephantsPlaying.jpg" alt="At Play">
+                <div class="gallery-overlay">
+                    <h3>At Play</h3>
+                    <p>ELEPHANTS • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/RedPandaHanging.jpg"
+                 data-title="Hanging Around"
+                 data-meta="RED PANDA • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/RedPandaHanging.jpg" alt="Hanging Around">
+                <div class="gallery-overlay">
+                    <h3>Hanging Around</h3>
+                    <p>RED PANDA • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/DuskyLeafMonkeySitting.jpg"
+                 data-title="At Rest"
+                 data-meta="DUSKY LEAF MONKEY • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/DuskyLeafMonkeySitting.jpg" alt="At Rest">
+                <div class="gallery-overlay">
+                    <h3>At Rest</h3>
+                    <p>DUSKY LEAF MONKEY • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/PeacockFemaleWalking.jpg"
+                 data-title="The Walk"
+                 data-meta="PEAHEN • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/PeacockFemaleWalking.jpg" alt="The Walk">
+                <div class="gallery-overlay">
+                    <h3>The Walk</h3>
+                    <p>PEAHEN • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/TigerBehindTree.jpg"
+                 data-title="Hidden"
+                 data-meta="TIGER • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/TigerBehindTree.jpg" alt="Hidden">
+                <div class="gallery-overlay">
+                    <h3>Hidden</h3>
+                    <p>TIGER • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Pangolin.jpg"
+                 data-title="The Rare One"
+                 data-meta="PANGOLIN • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Pangolin.jpg" alt="The Rare One">
+                <div class="gallery-overlay">
+                    <h3>The Rare One</h3>
+                    <p>PANGOLIN • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/CloudedLeopardSitting.jpg"
+                 data-title="Sitting"
+                 data-meta="CLOUDED LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/CloudedLeopardSitting.jpg" alt="Sitting">
+                <div class="gallery-overlay">
+                    <h3>Sitting</h3>
+                    <p>CLOUDED LEOPARD • Location • Year</p>
+                </div>
+            </div>
+    </div>
 </section>
 
 <div class="portfolio-divider">
     <div style="flex:1;height:1px;background:var(--golden);opacity:0.3;"></div>
-    <span style="font-family:var(--font-body);font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--sand);">Where Humanity Began</span>
+    <span style="font-family:var(--font-body);font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:#7A5C0A;">Where Humanity Began</span>
     <div style="flex:1;height:1px;background:var(--golden);opacity:0.3;"></div>
 </div>
 
@@ -325,12 +545,169 @@
         </div>
         <div class="portfolio-section-num">II</div>
     </div>
-    <div class="gallery-grid"></div>
+    <div class="gallery-grid">
+            <div class="gallery-item"
+                 data-src="/CheetahBothered.jpg"
+                 data-title="Do Not Disturb"
+                 data-meta="CHEETAH • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/CheetahBothered.jpg" alt="Do Not Disturb">
+                <div class="gallery-overlay">
+                    <h3>Do Not Disturb</h3>
+                    <p>CHEETAH • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Hyena 1.jpg"
+                 data-title="The Laugh"
+                 data-meta="HYENA • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Hyena 1.jpg" alt="The Laugh">
+                <div class="gallery-overlay">
+                    <h3>The Laugh</h3>
+                    <p>HYENA • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/LeoFace.jpg"
+                 data-title="Face to Face"
+                 data-meta="LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/LeoFace.jpg" alt="Face to Face">
+                <div class="gallery-overlay">
+                    <h3>Face to Face</h3>
+                    <p>LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Mangoose1.jpg"
+                 data-title="Alert"
+                 data-meta="MONGOOSE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Mangoose1.jpg" alt="Alert">
+                <div class="gallery-overlay">
+                    <h3>Alert</h3>
+                    <p>MONGOOSE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Pelican2.jpg"
+                 data-title="Pelican"
+                 data-meta="PELICAN • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Pelican2.jpg" alt="Pelican">
+                <div class="gallery-overlay">
+                    <h3>Pelican</h3>
+                    <p>PELICAN • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/CheetahBabyPortrait.jpg"
+                 data-title="The Future King"
+                 data-meta="CHEETAH CUB • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/CheetahBabyPortrait.jpg" alt="The Future King">
+                <div class="gallery-overlay">
+                    <h3>The Future King</h3>
+                    <p>CHEETAH CUB • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/LionOnGround.jpg"
+                 data-title="At Rest"
+                 data-meta="LION • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/LionOnGround.jpg" alt="At Rest">
+                <div class="gallery-overlay">
+                    <h3>At Rest</h3>
+                    <p>LION • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/MangooseLooking.jpg"
+                 data-title="Looking"
+                 data-meta="MONGOOSE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/MangooseLooking.jpg" alt="Looking">
+                <div class="gallery-overlay">
+                    <h3>Looking</h3>
+                    <p>MONGOOSE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/LeopardOnTree.jpg"
+                 data-title="Above It All"
+                 data-meta="LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/LeopardOnTree.jpg" alt="Above It All">
+                <div class="gallery-overlay">
+                    <h3>Above It All</h3>
+                    <p>LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/LeoWalking.jpg"
+                 data-title="On the Move"
+                 data-meta="LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/LeoWalking.jpg" alt="On the Move">
+                <div class="gallery-overlay">
+                    <h3>On the Move</h3>
+                    <p>LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/RingTailedLemurSitting.jpg"
+                 data-title="Sitting"
+                 data-meta="RING-TAILED LEMUR • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/RingTailedLemurSitting.jpg" alt="Sitting">
+                <div class="gallery-overlay">
+                    <h3>Sitting</h3>
+                    <p>RING-TAILED LEMUR • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/RhinoCouple.jpg"
+                 data-title="Couple"
+                 data-meta="RHINO • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/RhinoCouple.jpg" alt="Couple">
+                <div class="gallery-overlay">
+                    <h3>Couple</h3>
+                    <p>RHINO • Location • Year</p>
+                </div>
+            </div>
+    </div>
 </section>
 
 <div class="portfolio-divider">
     <div style="flex:1;height:1px;background:var(--golden);opacity:0.3;"></div>
-    <span style="font-family:var(--font-body);font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--sand);">Eye To Eye</span>
+    <span style="font-family:var(--font-body);font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:#7A5C0A;">Eye To Eye</span>
     <div style="flex:1;height:1px;background:var(--golden);opacity:0.3;"></div>
 </div>
 
@@ -344,8 +721,221 @@
         </div>
         <div class="portfolio-section-num">III</div>
     </div>
-    <div class="gallery-grid"></div>
+    <div class="gallery-grid">
+            <div class="gallery-item"
+                 data-src="/Turtle2.jpg"
+                 data-title="Turtle II"
+                 data-meta="SEA TURTLE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Turtle2.jpg" alt="Turtle II">
+                <div class="gallery-overlay">
+                    <h3>Turtle II</h3>
+                    <p>SEA TURTLE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Yak1.jpg"
+                 data-title="The Yak"
+                 data-meta="YAK • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Yak1.jpg" alt="The Yak">
+                <div class="gallery-overlay">
+                    <h3>The Yak</h3>
+                    <p>YAK • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Horse2.jpg"
+                 data-title="Horse II"
+                 data-meta="HORSE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Horse2.jpg" alt="Horse II">
+                <div class="gallery-overlay">
+                    <h3>Horse II</h3>
+                    <p>HORSE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/PandaSitting.jpg"
+                 data-title="Sitting"
+                 data-meta="GIANT PANDA • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/PandaSitting.jpg" alt="Sitting">
+                <div class="gallery-overlay">
+                    <h3>Sitting</h3>
+                    <p>GIANT PANDA • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/PolarBearRoaring.jpg"
+                 data-title="The Roar"
+                 data-meta="POLAR BEAR • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/PolarBearRoaring.jpg" alt="The Roar">
+                <div class="gallery-overlay">
+                    <h3>The Roar</h3>
+                    <p>POLAR BEAR • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Wombat.jpg"
+                 data-title="Wombat"
+                 data-meta="WOMBAT • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Wombat.jpg" alt="Wombat">
+                <div class="gallery-overlay">
+                    <h3>Wombat</h3>
+                    <p>WOMBAT • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Horse3.jpg"
+                 data-title="Horse III"
+                 data-meta="HORSE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Horse3.jpg" alt="Horse III">
+                <div class="gallery-overlay">
+                    <h3>Horse III</h3>
+                    <p>HORSE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/RedPandaWalking.jpg"
+                 data-title="On the Move"
+                 data-meta="RED PANDA • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/RedPandaWalking.jpg" alt="On the Move">
+                <div class="gallery-overlay">
+                    <h3>On the Move</h3>
+                    <p>RED PANDA • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Turtle1.jpg"
+                 data-title="Turtle I"
+                 data-meta="SEA TURTLE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Turtle1.jpg" alt="Turtle I">
+                <div class="gallery-overlay">
+                    <h3>Turtle I</h3>
+                    <p>SEA TURTLE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/SnowLeopardStanding.jpg"
+                 data-title="Standing"
+                 data-meta="SNOW LEOPARD • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/SnowLeopardStanding.jpg" alt="Standing">
+                <div class="gallery-overlay">
+                    <h3>Standing</h3>
+                    <p>SNOW LEOPARD • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/SquirrelMonkeyEating.jpg"
+                 data-title="Eating"
+                 data-meta="SQUIRREL MONKEY • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/SquirrelMonkeyEating.jpg" alt="Eating">
+                <div class="gallery-overlay">
+                    <h3>Eating</h3>
+                    <p>SQUIRREL MONKEY • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/LynxPortrait.jpg"
+                 data-title="Portrait"
+                 data-meta="LYNX • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/LynxPortrait.jpg" alt="Portrait">
+                <div class="gallery-overlay">
+                    <h3>Portrait</h3>
+                    <p>LYNX • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Horse.jpg"
+                 data-title="Horse I"
+                 data-meta="HORSE • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Horse.jpg" alt="Horse I">
+                <div class="gallery-overlay">
+                    <h3>Horse I</h3>
+                    <p>HORSE • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/Red panda walking.jpg"
+                 data-title="Walking"
+                 data-meta="RED PANDA • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/Red panda walking.jpg" alt="Walking">
+                <div class="gallery-overlay">
+                    <h3>Walking</h3>
+                    <p>RED PANDA • Location • Year</p>
+                </div>
+            </div>
+            <div class="gallery-item"
+                 data-src="/PandaLooking.jpg"
+                 data-title="Looking"
+                 data-meta="GIANT PANDA • Location • Year"
+                 data-description="Add your description here — what drew you to this shot, the light, the moment, the behaviour."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="lbOpen(this)">
+                <img src="/PandaLooking.jpg" alt="Looking">
+                <div class="gallery-overlay">
+                    <h3>Looking</h3>
+                    <p>GIANT PANDA • Location • Year</p>
+                </div>
+            </div>
+    </div>
 </section>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="lbClose(event)">
+    <div class="lightbox-close" onclick="lbClose(event)">&times;</div>
+    <div class="lightbox-prev" onclick="lbNav(-1,event)">&#8249;</div>
+    <div class="lightbox-next" onclick="lbNav(1,event)">&#8250;</div>
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+        <div class="lightbox-img-wrap"><img id="lb-img" src="" alt=""></div>
+        <div class="lightbox-info">
+            <h2 id="lb-title"></h2>
+            <p class="lb-meta" id="lb-meta"></p>
+            <p class="lb-desc" id="lb-desc"></p>
+            <div class="lb-tech"><h3>Technical Details</h3><ul id="lb-tech"></ul></div>
+        </div>
+    </div>
+</div>
 
 <footer>
         <p>© 2026 Christine Khomyk Wildlife Photography. All rights reserved.</p>
@@ -408,5 +998,35 @@ window.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script type="module" src="./src/index.ts"></script>
+
+<script>
+var _lbItems = [], _lbIdx = 0;
+function lbOpen(el) {
+    var section = el.closest('.gallery-grid').parentElement;
+    _lbItems = Array.from(section.querySelectorAll('.gallery-item'));
+    _lbIdx = _lbItems.indexOf(el);
+    lbUpdate();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function lbClose(e) { if(e) e.stopPropagation(); document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+function lbNav(d, e) { if(e) e.stopPropagation(); _lbIdx = (_lbIdx + d + _lbItems.length) % _lbItems.length; lbUpdate(); }
+function lbUpdate() {
+    var it = _lbItems[_lbIdx];
+    document.getElementById('lb-img').src = it.dataset.src || it.querySelector('img').src;
+    document.getElementById('lb-title').textContent = it.dataset.title || '';
+    document.getElementById('lb-meta').textContent = it.dataset.meta || '';
+    document.getElementById('lb-desc').textContent = it.dataset.description || '';
+    var tech = it.dataset.tech ? it.dataset.tech.split('|') : [];
+    document.getElementById('lb-tech').innerHTML = tech.map(function(t){return '<li>'+t.trim()+'</li>';}).join('');
+}
+document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+});
+</script>
+
 </body>
 </html>
