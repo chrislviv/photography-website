@@ -1,3 +1,9 @@
+/* Hero title line break control */
+        .hero-br { display: none; }
+
+        @media (max-width: 1024px) {
+            .hero-br { display: inline; }
+        }
 /* Main Page Hero Section - 3 Images with Single Scroll-Away Text */
         .hero-section {
             margin-top: 48px;
@@ -303,7 +309,7 @@
         @media (max-width: 1024px) {
             
             .hero-content h1 {
-                font-size: 4.5rem !important;
+                font-size: 5.5rem !important;
             }
             
             .hero-content .subtitle {
@@ -347,4 +353,8 @@
                 flex-wrap: wrap;
                 gap: 2rem;
             }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero-content h1 { font-size: 5rem !important; }
         }
