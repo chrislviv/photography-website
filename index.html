@@ -151,6 +151,14 @@
             transform: translateY(0);
         }
 
+        /* Touch devices — show content without hover */
+        @media (hover: none) or (pointer: coarse) {
+            .reveal {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        }
+
         .panel-eyebrow {
             font-size: 0.52rem;
             font-weight: 400;
@@ -314,6 +322,12 @@
 
         .hint.visible { opacity: 1; }
         .stage:has(.panel:hover) .hint { opacity: 0; }
+
+        /* ── IPAD ── */
+        @media (max-width: 1024px) and (min-width: 701px) {
+            .id-name { font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: 0.15em; }
+            .id-sub   { font-size: clamp(0.7rem, 1.2vw, 1rem); letter-spacing: 0.3em; }
+        }
 
         /* ── MOBILE ── */
         @media (max-width: 700px) {
