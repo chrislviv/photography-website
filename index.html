@@ -130,7 +130,7 @@
             padding: 3.5rem 4rem 4.5rem;
         }
 
-        #wildlife .panel-content { align-items: flex-start; }
+        #wildlife .panel-content { align-items: flex-start; justify-content: flex-start; padding-top: 7rem; }
         #car .panel-content      { align-items: flex-end; text-align: right; }
 
         /* All content items share reveal logic */
@@ -324,9 +324,13 @@
         .stage:has(.panel:hover) .hint { opacity: 0; }
 
         /* ── IPAD ── */
-        @media (max-width: 1024px) and (min-width: 701px) {
-            .id-name { font-size: clamp(2.5rem, 4.5vw, 4rem); letter-spacing: 0.15em; }
-            .id-sub   { font-size: clamp(0.7rem, 1.2vw, 1rem); letter-spacing: 0.3em; }
+        @media (max-width: 1400px) and (min-width: 701px) {
+            .id-name { font-size: clamp(2.5rem, 4vw, 4rem); letter-spacing: 0.15em; }
+            .id-sub   { font-size: clamp(0.7rem, 1.1vw, 1rem); letter-spacing: 0.3em; }
+            .panel-title { font-size: clamp(3.5rem, 6vw, 6rem); white-space: nowrap; }
+            .panel-eyebrow { font-size: 0.75rem; }
+            .panel-sub { font-size: clamp(1rem, 1.6vw, 1.4rem); }
+            .panel-cta { font-size: 0.7rem; margin-top: 1.5rem; }
         }
 
         /* ── MOBILE ── */
@@ -458,7 +462,7 @@
         <div class="bg-letter" id="bg-w">W</div>
         <div class="panel-content">
             <span class="panel-eyebrow reveal reveal-1">Photography Expeditions & Fine Art</span>
-            <h2 class="panel-title reveal reveal-2">Wild<br>life</h2>
+            <h2 class="panel-title reveal reveal-2">Wildlife</h2>
             <p class="panel-sub reveal reveal-3">Africa · Great Apes · Savannah</p>
             <a class="panel-cta reveal reveal-4" href="./wildlife_index.html" tabindex="-1">
                 Enter
@@ -488,7 +492,7 @@
         <div class="bg-letter" id="bg-a">A</div>
         <div class="panel-content">
             <span class="panel-eyebrow reveal reveal-1">Automotive & Motorsport</span>
-            <h2 class="panel-title reveal reveal-2">Auto<br>motive</h2>
+            <h2 class="panel-title reveal reveal-2">Automotive</h2>
             <p class="panel-sub reveal reveal-3">Cars · Circuits · Precision</p>
             <a class="panel-cta reveal reveal-4" href="./cars_index.html" tabindex="-1">
                 <span class="cta-line"></span>
