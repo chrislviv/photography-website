@@ -264,9 +264,11 @@
         animation-range: entry 25% entry 75%;
     }
     
-    .gallery-overlay {
+    .gallery-overlay,
+    .gallery-item .gallery-overlay {
         transform: translateY(0) !important;
         opacity: 1 !important;
+        visibility: visible !important;
     }
 }
 
@@ -301,7 +303,7 @@
         @media (max-width: 1024px) {
             
             .hero-content h1 {
-                font-size: 8rem;
+                font-size: 4.5rem !important;
             }
             
             .hero-content .subtitle {
@@ -317,7 +319,7 @@
         @media (max-width: 768px) {
             
             .hero-content h1 {
-                font-size: 7rem;
+                font-size: 4rem !important;
                 letter-spacing: 2px;
             }
             
