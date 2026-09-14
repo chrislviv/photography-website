@@ -36,15 +36,15 @@
 }
 
         .hero-slide:nth-child(1) .hero-background {
-            background-image: url('/CloudedLeopardBetweenTrees.jpg');
+            background-image: url('/LeoFace.jpg');
         }
         
         .hero-slide:nth-child(2) .hero-background {
-            background-image: url('/SquirrelMonkeyWithBaby.jpg');
+            background-image: url('/PigTailMacaqueBabyScratching.jpg');
         }
         
         .hero-slide:nth-child(3) .hero-background {
-            background-image: url('/RingTailLemurSitting.jpg');
+            background-image: url('/RingTailedLemurSitting.jpg');
         }
         
         /* Text overlay that slides away on scroll */
@@ -297,8 +297,6 @@
             letter-spacing: 1px;
         }
         
-      
-
        /* Responsive Design */
         @media (max-width: 1024px) {
             
