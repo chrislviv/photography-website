@@ -303,7 +303,7 @@
         @media (max-width: 1024px) {
             
             .hero-content h1 {
-                font-size: 4.5rem !important;
+                font-size: 3.5rem;
             }
             
             .hero-content .subtitle {
@@ -319,9 +319,8 @@
         @media (max-width: 768px) {
             
             .hero-content h1 {
-                font-size: 4rem !important;
+                font-size: 2.5rem;
                 letter-spacing: 2px;
-                max-width: 55vw;
             }
             
             .hero-content .subtitle {
