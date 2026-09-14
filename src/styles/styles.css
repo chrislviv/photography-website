@@ -19,6 +19,7 @@
             box-sizing: border-box;
         }
         
+        html { overflow-x: hidden; }
         body {
             font-family: var(--font-body);
             background-color: var(--cream);
@@ -484,14 +485,17 @@
     }
 
 
-    @media (max-width: 1024px) and (orientation: landscape) {
-        .nav-links > li > a:not(.nav-social-icon):not(.nav-switch-wildlife) {
-            font-size: 0.6rem;
-            padding: 0 0.55rem;
-        }
+
         .nav-switch-wildlife {
             font-size: 0.6rem;
             padding: 0.2rem 0.45rem;
+        }
+    }
+
+
+        .nav-switch-wildlife {
+            font-size: 0.5rem;
+            padding: 0.2rem 0.4rem;
         }
     }
 
