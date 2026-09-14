@@ -451,8 +451,8 @@
         }
     
         /* PHONE LANDSCAPE */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .identity { top: 50% !important; transform: translate(-50%, -50%) !important; }
+        @media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+            .identity { top: 50% !important; transform: translateY(-50%) !important; }
             #car .panel-content { justify-content: flex-start !important; align-items: flex-end !important; text-align: right !important; padding-top: 0.5rem !important; padding-right: calc(1.2rem + env(safe-area-inset-right, 0px)) !important; }
             .panel-content { padding: 0.8rem 1.2rem !important; }
             .id-name { font-size: 1.5rem !important; }
