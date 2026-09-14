@@ -507,7 +507,7 @@
         }
     }
         .nav-switch-wildlife {
-            font-size: 0.6rem !important;
+            font-size: 0.75rem !important;
             padding: 0.2rem 0.45rem !important;
         }
         .nav-links { height: 48px; }
@@ -646,13 +646,10 @@
         .nav-links > li > a:not(.nav-social-icon),
         .nav-links > li > a:not(.nav-switch-wildlife) {
             font-size: 0.75rem !important;
-            padding: 0 0.6rem !important;
+            padding: 0 0.55rem !important;
         }
         .nav-switch-wildlife {
             font-size: 0.75rem !important;
-            padding: 0 0.6rem !important;
-            vertical-align: middle !important;
-            display: inline-flex !important;
-            align-items: center !important;
+            padding: 0.2rem 0.45rem !important;
         }
     }
