@@ -471,6 +471,18 @@
         }
     }
         
+
+    @media (max-width: 1024px) {
+        .nav-links > li > a:not(.nav-social-icon):not(.nav-switch-wildlife) {
+            font-size: 0.72rem;
+            padding: 0 0.6rem;
+        }
+        .nav-switch-wildlife {
+            font-size: 0.72rem;
+            padding: 0.28rem 0.5rem;
+        }
+    }
+
     @media (max-width: 820px) {
         nav {
             padding: 0;
