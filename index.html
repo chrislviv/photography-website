@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Christine Khomyk Photography</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -452,7 +452,7 @@
     
         /* PHONE LANDSCAPE */
         @media (max-width: 700px) and (orientation: landscape) {
-            #car .panel-content { justify-content: flex-start !important; align-items: flex-end !important; text-align: right !important; padding-top: 0.5rem !important; padding-right: 1.2rem !important; }
+            #car .panel-content { justify-content: flex-start !important; align-items: flex-end !important; text-align: right !important; padding-top: 0.5rem !important; padding-right: calc(1.2rem + env(safe-area-inset-right, 0px)) !important; }
             .panel-content { padding: 0.8rem 1.2rem !important; }
             .id-name { font-size: 1.5rem !important; }
             .id-sub  { font-size: 0.6rem !important; }
@@ -462,7 +462,7 @@
         }
         /* PHONE PORTRAIT */
         @media (max-width: 700px) and (orientation: portrait) {
-            #car .panel-content { justify-content: flex-end !important; align-items: flex-end !important; text-align: right !important; padding-bottom: 3rem !important; padding-right: 1.2rem !important; }
+            #car .panel-content { justify-content: flex-end !important; align-items: flex-end !important; text-align: right !important; padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px)) !important; padding-right: 1.2rem !important; }
             .panel-content { padding: 0.8rem 1.2rem !important; }
             .id-name { font-size: 1rem !important; }
             .id-sub  { font-size: 0.4rem !important; }
@@ -472,7 +472,7 @@
         }
         /* IPAD AUTOMOTIVE BOTTOM RIGHT */
         @media (min-width: 701px) and (max-width: 1400px) {
-            #car .panel-content { justify-content: flex-end !important; align-items: flex-end !important; text-align: right !important; padding-bottom: 4rem !important; padding-right: 2.5rem !important; }
+            #car .panel-content { justify-content: flex-end !important; align-items: flex-end !important; text-align: right !important; padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)) !important; padding-right: 2.5rem !important; }
         }
 </style>
 </head>
