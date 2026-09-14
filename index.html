@@ -443,27 +443,38 @@
             /* Hide hint on mobile */
             .hint { display: none; }
 
-            /* Phone landscape */
-            @media (max-width: 700px) and (orientation: landscape) {
-                #car .panel-content { justify-content: flex-start !important; padding-top: 0.5rem !important; padding-bottom: 0 !important; }
-                .panel-content { padding: 1rem 1.5rem !important; }
-                .id-name { font-size: 1.5rem !important; }
-                .id-sub  { font-size: 0.6rem !important; }
-            }
-            /* Phone portrait */
-            @media (max-width: 700px) and (orientation: portrait) {
-                #car .panel-content { justify-content: flex-end !important; padding-bottom: 4rem !important; align-items: flex-end !important; text-align: right !important; }
-                .panel-content { padding: 1rem 1.5rem !important; }
-                .id-name { font-size: 0.45rem !important; }
-                .id-sub  { font-size: 0.22rem !important; }
-            }
         }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { transition: none !important; animation: none !important; }
             #wildlife, #car { clip-path: none !important; }
         }
-    </style>
+    
+        /* PHONE LANDSCAPE */
+        @media (max-width: 700px) and (orientation: landscape) {
+            #car .panel-content { justify-content: flex-start !important; align-items: flex-end !important; text-align: right !important; padding-top: 0.5rem !important; padding-right: 1.2rem !important; }
+            .panel-content { padding: 0.8rem 1.2rem !important; }
+            .id-name { font-size: 1.5rem !important; }
+            .id-sub  { font-size: 0.6rem !important; }
+            .panel-eyebrow { font-size: 0.6rem !important; }
+            .panel-sub { font-size: 0.9rem !important; }
+            .panel-cta { font-size: 0.55rem !important; }
+        }
+        /* PHONE PORTRAIT */
+        @media (max-width: 700px) and (orientation: portrait) {
+            #car .panel-content { justify-content: flex-end !important; align-items: flex-end !important; text-align: right !important; padding-bottom: 3rem !important; padding-right: 1.2rem !important; }
+            .panel-content { padding: 0.8rem 1.2rem !important; }
+            .id-name { font-size: 1rem !important; }
+            .id-sub  { font-size: 0.4rem !important; }
+            .panel-eyebrow { font-size: 0.55rem !important; }
+            .panel-sub { font-size: 0.85rem !important; }
+            .panel-cta { font-size: 0.52rem !important; }
+        }
+        /* IPAD AUTOMOTIVE BOTTOM RIGHT */
+        @media (min-width: 701px) and (max-width: 1400px) {
+            #car .panel-content { justify-content: flex-end !important; align-items: flex-end !important; text-align: right !important; padding-bottom: 4rem !important; padding-right: 2.5rem !important; }
+        }
+</style>
 </head>
 <body>
 
