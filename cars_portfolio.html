@@ -46,9 +46,21 @@ body.triptych-active .overlay {
 }
 .tp.expanding {flex:1 !important;}
 
-.tp-1{background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.55)),url('/Mazerati5.jpg') center/cover no-repeat;}
-.tp-2{background:linear-gradient(155deg,#0E1628,#121E32);}
-.tp-3{background:linear-gradient(155deg,#101828,#142036);}
+.tp-1,.tp-2,.tp-3{position:relative;}
+.tp-1::before,.tp-2::before,.tp-3::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  transition:transform .75s cubic-bezier(.77,0,.175,1);
+}
+.tp:hover::before{transform:scale(1.04);}
+.tp-1::before{background-image:url('/Mazerati5.jpg');}
+.tp-2::before{background-image:url('/Shicane.jpg');}
+.tp-3::before{background-image:url('/Fiat3.jpg');}
+.tp-1::after,.tp-2::after,.tp-3::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.6) 100%);
+}
+.tp-ghost,.tp-content{position:relative;z-index:2;}
 
 .tp-ghost {
   position:absolute;font-family:"Cormorant Garamond",serif;font-weight:200;
@@ -473,131 +485,183 @@ body.triptych-active .overlay {
     </div>
     <div class="sh-right"><div class="sh-num">II</div></div>
   </div>
+  
   <div class="gallery-container"><div class="gallery-grid">
             <div class="gallery-item"
-                 data-title="Photo 01"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+                 data-title="Shicane"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:3/4;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Shicane.jpg" alt="Shicane">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 02"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Kemmel Straight"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:4/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Kemmel1.jpg" alt="Kemmel Straight">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 03"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Mercedes"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:1/1;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Merc1.jpg" alt="Mercedes">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 04"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Crash"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:2/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Crash.jpg" alt="Crash">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 05"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:16/9;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h1.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 06"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:3/4;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h2.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 07"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Kimi"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:4/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Kimi1.jpg" alt="Kimi">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 08"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Ollie"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:1/1;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Ollie1.jpg" alt="Ollie">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 09"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:2/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h3.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 10"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:16/9;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h4.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 11"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:3/4;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h8.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 12"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:4/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h17.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 13"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:1/1;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h5.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 14"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:2/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h6.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 15"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:16/9;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Spa24h7.jpg" alt="Spa 24h">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="openLightbox(this)">
+                <img src="/Spa24h9.jpg" alt="Spa 24h">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="openLightbox(this)">
+                <img src="/Spa24h11.jpg" alt="Spa 24h">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="openLightbox(this)">
+                <img src="/Spa24h13.jpg" alt="Spa 24h">
+                <div class="hover-overlay"><span>View</span></div>
+            </div>
+            <div class="gallery-item"
+                 data-title="Spa 24h"
+                 data-meta="SPA-FRANCORCHAMPS &bull; Belgium • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
+                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
+                 onclick="openLightbox(this)">
+                <img src="/Spa24h16.jpg" alt="Spa 24h">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
   </div></div>
 </section>
 
+<section class="gallery-section" id="living-legends">
 <section class="gallery-section" id="living-legends">
   <div class="section-header">
     <div class="sh-left">
@@ -607,126 +671,33 @@ body.triptych-active .overlay {
     </div>
     <div class="sh-right"><div class="sh-num">III</div></div>
   </div>
+  
   <div class="gallery-container"><div class="gallery-grid">
             <div class="gallery-item"
-                 data-title="Photo 01"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+                 data-title="Mercedes Classic"
+                 data-meta="Europe • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:3/4;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Merc2.jpg" alt="Mercedes Classic">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 02"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Fiat"
+                 data-meta="Europe • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:4/3;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Fiat3.jpg" alt="Fiat">
                 <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 03"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
+            </div>
+            <div class="gallery-item"
+                 data-title="Porsche"
+                 data-meta="Europe • 2025"
+                 data-description="Edit this description to describe the shot — location, light conditions, what drew you to this angle."
                  data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
                  onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:1/1;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 04"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:2/3;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 05"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:16/9;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 06"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:3/4;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 07"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:4/3;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 08"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:1/1;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 09"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:2/3;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 10"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:16/9;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 11"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:3/4;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 12"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:4/3;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 13"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:1/1;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 14"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:2/3;background:var(--s2);display:block;width:100%;"></div>
-                <div class="hover-overlay"><span>View</span></div>
-            </div>            <div class="gallery-item"
-                 data-title="Photo 15"
-                 data-meta="Location &bull; Year"
-                 data-description="Description coming soon."
-                 data-tech="Canon R5 Mark II|RF 70-200mm f/2.8L|Settings TBC"
-                 onclick="openLightbox(this)">
-                <div class="ph-img" style="aspect-ratio:16/9;background:var(--s2);display:block;width:100%;"></div>
+                <img src="/Porsche2.jpg" alt="Porsche">
                 <div class="hover-overlay"><span>View</span></div>
             </div>
   </div></div>
